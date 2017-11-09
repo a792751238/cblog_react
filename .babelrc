@@ -1,0 +1,16 @@
+//.babelrc
+{
+  "presets": [
+    "react",
+    "env"
+  ],
+  "plugins": [
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "style": true
+      }
+    ]
+  ]
+}
