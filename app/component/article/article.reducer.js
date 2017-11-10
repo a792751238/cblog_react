@@ -28,6 +28,7 @@ const initState = fromJS({
     article: {},
     comments: {},
     authors: {},
+    articles_date: null
 });
 
 const handlers = {
@@ -38,6 +39,7 @@ const handlers = {
         return article.set('authors', fromJS(action.payload));
     },
     [GET_ALL_ARTICLES]: (article, action) => {
+        article = article.set('articles_date', fromJS(action.payload.filterDate));
         article = article.set('articles_count', fromJS(action.payload.count));
         return article.set('articles', fromJS(action.payload.articles));
     },

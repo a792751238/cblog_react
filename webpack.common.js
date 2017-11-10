@@ -52,6 +52,12 @@ module.exports = {
                     loader: 'image-webpack-loader'
                 }]
             },
+            {
+                test: /\.json$/,
+                use: [{
+                    loader: 'json-loader'
+                }]
+            },
         ]
     },
     devServer: {

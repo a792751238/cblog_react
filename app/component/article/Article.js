@@ -4,6 +4,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Input, Button, message} from 'antd';
+import ReactMarkdowm from 'react-markdown';
 import {
     getOneArticle,
     addOneComment,
@@ -27,30 +28,19 @@ class Article extends React.Component {
             data.articleid = this.props.article.get('_id');
             data.author = this.props.user.get('_id');
             this.props.addOneComment(data)
-                .then(() => {
-                    message.success('发表成功');
-                })
-                .catch((error) => {
-                    message.error(error);
-                })
+                .then(() => message.success('发表成功'))
+                .catch(error => message.error(error))
         };
 
         this.deleteComment = id => {
             this.props.removeCommentById(id)
-                .then(() => {
-                    message.success('删除一条留言成功');
-                })
-                .catch(error => {
-                    message.error(error);
-                })
+                .then(() => message.success('删除一条留言成功'))
+                .catch(error => message.error(error))
         };
 
         this.matchCommentUser = (id) => {
             if (this.props.authors && this.props.authors.size) {
-                let author = this.props.authors.filter(i => {
-                    return i.get('_id') === id;
-                });
-                console.log(author.toJS());
+                let author = this.props.authors.filter(i => i.get('_id') === id);
                 if (author && author.size) return author;
             }
         }
@@ -62,7 +52,9 @@ class Article extends React.Component {
             getOneArticle,
             getAllAuthors
         } = this.props;
+
         let id = match.params.id;
+
         return Promise.all([
             getOneArticle(id),
             getAllAuthors()
@@ -70,14 +62,13 @@ class Article extends React.Component {
             .then(() => {
                 let articleid = this.props.article.get('_id');
                 //通过articleid查找所有的留言
-                if (articleid) {
-                    this.props.getComments(articleid);
-                }
+                if (articleid) this.props.getComments(articleid);
             });
     }
 
     render() {
         const {article} = this.props;
+
         return (
             <div>
                 <div className="article-title">
@@ -87,8 +78,7 @@ class Article extends React.Component {
                 </div>
                 <div className="article-content">
                     {
-                        article ? <div dangerouslySetInnerHTML={{__html: article.get('content')}}
-                                       className="markdown-body"></div> : '没有相应文章'
+                        article ? <ReactMarkdowm className="markdown-body" source={article.get('content')}/> : '没有相应文章'
                     }
                 </div>
                 <div className="comment">
@@ -104,16 +94,15 @@ class Article extends React.Component {
                                 return <li key={i.get('_id')} className="comments-item">
                                     <div className="avatar">
 
-                                           <img
-                                               src={`${server}/file/picture/${this.matchCommentUser(i.get('author')).getIn([0, 'avatar'])}`}
-                                               alt=""/>
+                                        <img
+                                            src={`${server}/file/picture/${this.matchCommentUser(i.get('author')).getIn([0, 'avatar'])}`}
+                                            alt=""/>
 
                                         <p className="user-name">{`${this.matchCommentUser(i.get('author')).getIn([0, 'username'])}`}</p>
                                         <p className="create-time">{new Date(i.get('createDate')).toLocaleString().split(' ')[0]}</p>
                                     </div>
                                     <div className="right">
-                                        <div dangerouslySetInnerHTML={{__html: i.get('content')}}
-                                             className="markdown-body content"></div>
+                                        <ReactMarkdowm className="markdown-body content" source={i.get('content')}/>
                                         <Button className="del-btn" type="primary" onClick={() => {
                                             this.deleteComment(i.get('_id'))
                                         }}>删除</Button>
@@ -137,6 +126,7 @@ const mapStateToProps = (state) => {
         authors: state.get('article').get('authors')
     }
 };
+
 const mapActionCreators = {
     getOneArticle,
     addOneComment,
@@ -144,4 +134,5 @@ const mapActionCreators = {
     removeCommentById,
     getAllAuthors
 };
+
 export default connect(mapStateToProps, mapActionCreators)(Article);
