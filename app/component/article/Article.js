@@ -78,7 +78,8 @@ class Article extends React.Component {
                 </div>
                 <div className="article-content">
                     {
-                        article ? <ReactMarkdowm className="markdown-body" source={article.get('content')}/> : '没有相应文章'
+                        article ? <ReactMarkdowm className="markdown-body"
+                                                 source={article.get('content')}/> : '没有相应文章'
                     }
                 </div>
                 <div className="comment">
@@ -102,7 +103,8 @@ class Article extends React.Component {
                                         <p className="create-time">{new Date(i.get('createDate')).toLocaleString().split(' ')[0]}</p>
                                     </div>
                                     <div className="right">
-                                        <ReactMarkdowm className="markdown-body content" source={i.get('content')}/>
+                                        <ReactMarkdowm className="markdown-body content"
+                                                       source={i.get('content')}/>
                                         <Button className="del-btn" type="primary" onClick={() => {
                                             this.deleteComment(i.get('_id'))
                                         }}>删除</Button>

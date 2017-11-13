@@ -7,23 +7,28 @@ import config from '../../app.config';
 
 export function get(url, type) {
     return dispatch => {
-        return $.ajax({
-            type: 'GET',
-            url: url,
-            xhrFields: {
-                withCredentials: true
-            },
-            success: function (msg) {
-                dispatch({
-                    type: type,
-                    payload: msg
-                });
-            },
-            error: function (err) {
-                console.log(err);
-            }
-        })
-    }
+        return $.ajax({type: 'GET', url: url, xhrFields: {withCredentials: true}})
+            .then(
+                function (res) {
+                    dispatch({
+                        type: type,
+                        payload: res
+                    });
+                },
+                function (err) {
+                    console.log(err);
+                }
+            );
+        // .done(function (msg) {
+        //     dispatch({
+        //         type: type,
+        //         payload: msg
+        //     });
+        // })
+        // .fail(function (err) {
+        //     console.log(err);
+        // })
+    };
 }
 
 export function post(url, data, type) {
@@ -34,17 +39,17 @@ export function post(url, data, type) {
             data: data,
             xhrFields: {
                 withCredentials: true
-            },
-            success: function (msg) {
+            }
+        })
+            .done(function (msg) {
                 dispatch({
                     type: type,
                     payload: msg
                 });
-            },
-            error: function (err) {
+            })
+            .fail(function (err) {
                 console.log(err);
-            }
-        })
+            })
     }
 }
 
@@ -53,16 +58,19 @@ export function remove(url, type) {
         return $.ajax({
             type: 'delete',
             url: url,
-            success: function (msg) {
+            xhrFields: {
+                withCredentials: true
+            }
+        })
+            .done(function (msg) {
                 dispatch({
                     type: type,
                     payload: msg
                 });
-            },
-            error: function (err) {
+            })
+            .fail(function (err) {
                 console.log(err);
-            }
-        })
+            })
     }
 }
 
@@ -71,16 +79,16 @@ export function update(url, data, type) {
         return $.ajax({
             type: 'put',
             url: url,
-            data: data,
-            success: function (msg) {
+            data: data
+        })
+            .done(function (msg) {
                 dispatch({
                     type: type,
                     payload: msg
                 });
-            },
-            error: function (err) {
+            })
+            .fail(function (err) {
                 console.log(err);
-            }
-        })
+            })
     }
 }

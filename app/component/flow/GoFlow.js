@@ -239,7 +239,8 @@ class GoFlow extends React.Component {
                     {"key": 6, "loc": "175 440", "text": "Sprinkle nuts on top"},
                     {"key": 7, "loc": "175 500", "text": "Bake for 25 minutes and let cool"},
                     {"key": 8, "loc": "175 570", "text": "Cut into rectangular grid"},
-                    {"key": -2, "category": "End", "loc": "175 640", "text": "Enjoy!"}
+                    {"key": 9, "loc": "175 670", "text": "我是好人"},
+                    {"key": -2, "category": "End", "loc": "175 780", "text": "Enjoy!"}
                 ],
                 "linkDataArray": [
                     {"from": 1, "to": 2, "fromPort": "B", "toPort": "T"},
@@ -248,7 +249,8 @@ class GoFlow extends React.Component {
                     {"from": 4, "to": 6, "fromPort": "B", "toPort": "T"},
                     {"from": 6, "to": 7, "fromPort": "B", "toPort": "T"},
                     {"from": 7, "to": 8, "fromPort": "B", "toPort": "T"},
-                    {"from": 8, "to": -2, "fromPort": "B", "toPort": "T"},
+                    {"from": 8, "to": 9, "fromPort": "B", "toPort": "T"},
+                    {"from": 9, "to": -2, "fromPort": "L", "toPort": "R"},
                     {"from": -1, "to": 0, "fromPort": "B", "toPort": "T"},
                     {"from": -1, "to": 1, "fromPort": "B", "toPort": "T"},
                     {"from": -1, "to": 5, "fromPort": "B", "toPort": "T"},
