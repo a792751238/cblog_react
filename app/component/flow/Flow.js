@@ -5,6 +5,7 @@
 import React from 'react';
 import GooFlow from './GooFlow';
 import GoFlow from './GoFlow';
+import JsPlumb from './JsPlumb';
 
 class Flow extends React.Component {
     constructor(props) {
@@ -17,7 +18,7 @@ class Flow extends React.Component {
                 <div>
                     asdads
                 </div>
-                <GoFlow/>
+                <JsPlumb/>
             </div>
         )
     }

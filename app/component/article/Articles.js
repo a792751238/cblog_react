@@ -67,7 +67,6 @@ class Articles extends React.Component {
             return null
         }
 
-
         let node_jsx, pop_jsx;
         if (date && date.size) {
             node_jsx = () => {
