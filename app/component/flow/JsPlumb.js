@@ -14,12 +14,14 @@ class JsPlumb extends React.Component {
         var jsPlumb = jp.jsPlumb;
         jsPlumb.ready(function () {
 
-            var instance = window.jsp = jsPlumb.getInstance({
+            //生成jsPlumb实例
+            var instance = jsPlumb.getInstance({
                 // default drag options
                 DragOptions: {cursor: 'pointer', zIndex: 2000},
                 // the overlays to decorate each connection with.  note that the label overlay uses a function to generate the label text; in this
                 // case it returns the 'labelText' member that we set on each connection in the 'init' method below.
                 ConnectionOverlays: [
+                    //连线箭头的设置
                     ["Arrow", {
                         location: 1,
                         visible: true,
@@ -32,6 +34,7 @@ class JsPlumb extends React.Component {
                             }
                         }
                     }],
+                    //线上的标签
                     ["Label", {
                         location: 0.1,
                         id: "label",
@@ -56,7 +59,7 @@ class JsPlumb extends React.Component {
             };
             instance.registerConnectionType("basic", basicType);
 
-            // this is the paint style for the connecting lines..
+            // 这里是连接线的两个点的样式
             var connectorPaintStyle = {
                     strokeWidth: 2,
                     stroke: "#61B7CF",
@@ -64,7 +67,7 @@ class JsPlumb extends React.Component {
                     outlineStroke: "white",
                     outlineWidth: 2
                 },
-                // .. and this is the hover style.
+                //线鼠标移上的效果
                 connectorHoverStyle = {
                     strokeWidth: 3,
                     stroke: "#216477",
@@ -76,6 +79,7 @@ class JsPlumb extends React.Component {
                     stroke: "#216477"
                 },
                 // the definition of source endpoints (the small blue ones)
+                //起始点样式设置
                 sourceEndpoint = {
                     endpoint: "Dot",
                     paintStyle: {
@@ -100,6 +104,7 @@ class JsPlumb extends React.Component {
                     ]
                 },
                 // the definition of target endpoints (will appear when the user drags a connection)
+                //目标点的样式
                 targetEndpoint = {
                     endpoint: "Dot",
                     paintStyle: {fill: "#7AB02C", radius: 7},
@@ -120,7 +125,16 @@ class JsPlumb extends React.Component {
                     connection.getOverlay("label").setLabel(connection.sourceId.substring(15) + "-" + connection.targetId.substring(15));
                 };
 
+
+            /**
+             * 连接点
+             * @param toId 传入节点的id
+             * @param sourceAnchors 源点
+             * @param targetAnchors 目标点
+             * @private
+             */
             var _addEndpoints = function (toId, sourceAnchors, targetAnchors) {
+
                 for (var i = 0; i < sourceAnchors.length; i++) {
                     var sourceUUID = toId + sourceAnchors[i];
                     instance.addEndpoint("flowchart" + toId, sourceEndpoint, {
@@ -163,11 +177,9 @@ class JsPlumb extends React.Component {
                 instance.connect({uuids: ["Window3RightMiddle", "Window2RightMiddle"], editable: true});
                 instance.connect({uuids: ["Window4BottomCenter", "Window1TopCenter"], editable: true});
                 instance.connect({uuids: ["Window3BottomCenter", "Window1BottomCenter"], editable: true});
-                //
 
-                //
-                // listen for clicks on connections, and offer to delete connections on click.
-                //
+
+                //连接线的点击事件
                 instance.bind("click", function (conn, originalEvent) {
                     // if (confirm("Delete connection from " + conn.sourceId + " to " + conn.targetId + "?"))
                     //   instance.detach(conn);
@@ -217,7 +229,8 @@ class JsPlumb extends React.Component {
             <div >
                 <div className="jtk-demo-main">
                     <div class="jtk-demo-canvas canvas-wide flowchart-demo jtk-surface jtk-surface-nopan" id="canvas">
-                        <div className="window jtk-node" id="flowchartWindow1" style={window_style1}>
+                        <div className="window jtk-node" id="flowchartWindow1" style={window_style1} onClick={() => {
+                        }}>
                             <strong>1</strong><br/><br/>
                         </div>
                         <div className="window jtk-node" id="flowchartWindow2" style={window_style2}>

@@ -93,7 +93,7 @@ class RecordAudio extends React.Component {
                         volume: e.target.value,
                     });
                     //如果声音为0，开起静音
-                    if (e.target.value <= 0) {
+                    if (e.target.value < 0) {
                         audio.muted = true;
                         this.setState({
                             openMuted: true
