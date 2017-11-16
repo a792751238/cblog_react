@@ -1,3 +1,4 @@
+//布局样式
 @import "layout/body";
 @import "layout/layout";
 @import "layout/header";
@@ -7,7 +8,9 @@
 @import "login";
 @import "audio";
 @import "changeuser";
-
+//插件样式
+@import "plugins/jsplumb";
+//框架样式
 @import "_antd";
 @import "~github-markdown-css";
 

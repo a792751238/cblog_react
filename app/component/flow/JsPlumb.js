@@ -4,16 +4,21 @@
 import React from 'react';
 import jp from '../../plugins/jsplumb/jsplumb';
 import './demo.css';
+import {connect} from 'react-redux';
+import {addOneList} from './flow.actions';
 
 class JsPlumb extends React.Component {
     constructor(props) {
         super(props);
+        this.addClick=()=>{
+            
+        }
     }
 
     componentDidMount() {
+        var self = this;
         var jsPlumb = jp.jsPlumb;
         jsPlumb.ready(function () {
-
             //生成jsPlumb实例
             var instance = jsPlumb.getInstance({
                 // default drag options
@@ -127,13 +132,13 @@ class JsPlumb extends React.Component {
 
 
             /**
-             * 连接点
+             * 创建一个节点
              * @param toId 传入节点的id
-             * @param sourceAnchors 源点
-             * @param targetAnchors 目标点
+             * @param sourceAnchors 创建源头节点
+             * @param targetAnchors 创建目标节点
              * @private
              */
-            var _addEndpoints = function (toId, sourceAnchors, targetAnchors) {
+            window._addEndpoints = function (toId, sourceAnchors, targetAnchors) {
 
                 for (var i = 0; i < sourceAnchors.length; i++) {
                     var sourceUUID = toId + sourceAnchors[i];
@@ -154,6 +159,41 @@ class JsPlumb extends React.Component {
             // suspend drawing and initialise.
             instance.batch(function () {
 
+                let length = 5;
+                $('#moveCreateDiv').on('mousemove', function () {
+                    mouseMove();
+                });
+                $('#moveCreateDiv').on('mouseup', function () {
+                    console.log('leace');
+                    self.props.addOneList();
+                    // $(this).hide();
+                    length++;
+                    _addEndpoints(`Window${length}`, ["TopCenter", "BottomCenter"], ["LeftMiddle", "RightMiddle"]);
+                    instance.draggable(document.getElementById(`flowchartWindow${length}`), {grid: [20, 20]});
+                });
+                function mousePosition(ev) {
+                    var div_offset = $('.flowchart-demo').offset();
+                    if (ev.pageX || ev.pageY) {
+                        let _pos = {
+                            x: ev.pageX - div_offset.left,
+                            y: ev.pageY - div_offset.top
+                        };
+                        return _pos;
+                    }
+                    return {
+                        x: ev.clientX + document.body.scrollLeft - div_offset.left,
+                        y: ev.clientY + document.body.scrollTop - div_offset.top
+                    };
+                }
+
+                function mouseMove(ev) {
+                    ev = ev || window.event;
+                    var mousePos = mousePosition(ev);
+                    document.getElementById('x').innerHTML = mousePos.x;
+                    document.getElementById('y').innerHTML = mousePos.y;
+                }
+
+                _addEndpoints("Window5", ["TopCenter", "BottomCenter"], ["LeftMiddle", "RightMiddle"]);
                 _addEndpoints("Window4", ["TopCenter", "BottomCenter"], ["LeftMiddle", "RightMiddle"]);
                 _addEndpoints("Window2", ["LeftMiddle", "BottomCenter"], ["TopCenter", "RightMiddle"]);
                 _addEndpoints("Window3", ["RightMiddle", "BottomCenter"], ["LeftMiddle", "TopCenter"]);
@@ -164,13 +204,11 @@ class JsPlumb extends React.Component {
                     init(connInfo.connection);
                 });
 
-                // make all the window divs draggable
-                instance.draggable(jsPlumb.getSelector(".flowchart-demo .window"), {grid: [20, 20]});
-                // THIS DEMO ONLY USES getSelector FOR CONVENIENCE. Use your library's appropriate selector
-                // method, or document.querySelectorAll:
-                //jsPlumb.draggable(document.querySelectorAll(".window"), { grid: [20, 20] });
+                // 将所有类名为window的对象设置为可拖动对象
+                instance.draggable(document.querySelectorAll(".flowchart-demo .window"), {grid: [20, 20]});
+                instance.draggable(document.querySelectorAll(".jtk-demo-header .window"), {grid: [20, 20]});
 
-                // connect a few up
+                // 连接两个点
                 instance.connect({uuids: ["Window2BottomCenter", "Window3TopCenter"], editable: true});
                 instance.connect({uuids: ["Window2LeftMiddle", "Window4LeftMiddle"], editable: true});
                 instance.connect({uuids: ["Window4TopCenter", "Window4RightMiddle"], editable: true});
@@ -195,55 +233,92 @@ class JsPlumb extends React.Component {
                 });
 
                 instance.bind("connectionMoved", function (params) {
-                    console.log("connection " + params.connection.id + " was moved");
+                    console.log("connection " + <params></params>.connection.id + " was moved");
                 });
             });
 
             jsPlumb.fire("jsPlumbDemoLoaded", instance);
-
         });
+
+
     }
 
     render() {
         const window_style1 = {
-            top: '34em',
-            left: '5em',
+            top: '408px',
+            left: '60px',
         };
 
         const window_style2 = {
-            top: '7em',
-            left: '36em',
+            top: '84px',
+            left: '432px',
         };
 
         const window_style3 = {
-            top: '27em',
-            left: '48em',
+            top: '324px',
+            left: '576px',
         };
 
         const window_style4 = {
-            top: '23em',
-            left: '22em',
+            top: '276px',
+            left: '264px',
         };
-
+        const window_style5 = {
+            top: '176px',
+            left: '264px',
+        };
+        const window_style6 = {
+            top: '76px',
+            left: '164px',
+        };
         return (
-            <div >
+            <div className="js-layout">
+                <h3 id="cli">您的鼠标已经被跟踪</h3>
+                <p> X 轴坐标：<span id="x"></span></p>
+                <p> Y 轴坐标：<span id="y"></span></p>
+                <div className="jtk-demo-header">
+                    <div className="window" id="moveCreateDiv"><strong>hello wrold</strong></div>
+                </div>
                 <div className="jtk-demo-main">
-                    <div class="jtk-demo-canvas canvas-wide flowchart-demo jtk-surface jtk-surface-nopan" id="canvas">
-                        <div className="window jtk-node" id="flowchartWindow1" style={window_style1} onClick={() => {
-                        }}>
-                            <strong>1</strong><br/><br/>
-                        </div>
-                        <div className="window jtk-node" id="flowchartWindow2" style={window_style2}>
-                            <strong>2</strong><br/><br/></div>
-                        <div className="window jtk-node" id="flowchartWindow3" style={window_style3}>
-                            <strong>3</strong><br/><br/></div>
-                        <div className="window jtk-node" id="flowchartWindow4" style={window_style4}>
-                            <strong>4</strong><br/><br/></div>
+                    <div className="jtk-demo-canvas canvas-wide flowchart-demo jtk-surface jtk-surface-nopan"
+                         id="canvas">
+                        {
+                            console.log(this.props.list)
+                        }
+                        {
+                            this.props.list ? this.props.list.map(i => {
+                                return <div key={i} className="window jtk-node" id={`flowchartWindow${i}`}
+                                            style={window_style6}>
+                                    <strong>{i}</strong><br/><br/></div>
+                            }) : null
+                        }
+                        {/*<div className="window jtk-node" id="flowchartWindow1" style={window_style1}>*/}
+                        {/*<strong>1</strong><br/><br/></div>*/}
+                        {/*<div className="window jtk-node" id="flowchartWindow2" style={window_style2}>*/}
+                        {/*<strong>2</strong><br/><br/></div>*/}
+                        {/*<div className="window jtk-node" id="flowchartWindow3" style={window_style3}>*/}
+                        {/*<strong>3</strong><br/><br/></div>*/}
+                        {/*<div className="window jtk-node" id="flowchartWindow4" style={window_style4}>*/}
+                        {/*<strong>4</strong><br/><br/></div>*/}
+                        {/*<div className="window jtk-node" id="flowchartWindow5" style={window_style5}>*/}
+                        {/*<strong>5</strong><br/><br/></div>*/}
+                        {/*<div className="window jtk-node" id="flowchartWindow6" style={window_style6}>*/}
+                        {/*<strong>6</strong><br/><br/></div>*/}
                     </div>
                 </div>
+                <h1 onClick={this.addClick}>das</h1>
             </div>
         )
     }
 }
 
-export default JsPlumb;
+const mapStateToProps = (state) => {
+    return {
+        list: state.get('flow').get('list')
+    }
+};
+const mapActionCreators = {
+    addOneList
+};
+
+export default connect(mapStateToProps, mapActionCreators)(JsPlumb);

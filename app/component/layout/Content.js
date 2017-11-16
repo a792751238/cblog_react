@@ -7,7 +7,7 @@ import Audio from '../audio/Audio';
 import CreateArticle from '../article/createArticle';
 import Articles from '../article/Articles';
 import Article from '../article/Article';
-import Flow from '../flow/Flow';
+import Flow from '../flow/SimpleFlow';
 
 class Content extends React.Component {
     render() {

@@ -1,0 +1,23 @@
+.jp-container {
+    width: 1000px;
+    height: 700px;
+    .js-layout {
+        width: 1000px;
+        height: 700px;
+        position: relative;
+    }
+    .jtk-demo-header {
+        width: 1000px;
+        height: 100px;
+    }
+}
+
+.jtk-demo-main {
+    width: 1000px;
+    height: 600px;
+    .flowchart-demo {
+        width: 1000px;
+        height: 600px;
+        position: relative;
+    }
+}

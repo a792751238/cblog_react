@@ -3,7 +3,7 @@
     touch-action: none;
 }
 
-.flowchart-demo .window {
+.flowchart-demo .window, .jtk-demo-header .window {
     border: 1px solid #346789;
     box-shadow: 2px 2px 19px #aaa;
     -o-box-shadow: 2px 2px 19px #aaa;
@@ -30,7 +30,7 @@
     transition: box-shadow 0.15s ease-in;
 }
 
-.flowchart-demo .window:hover {
+.flowchart-demo .window:hover, .jtk-demo-header .window:hover {
     box-shadow: 2px 2px 19px #444;
     -o-box-shadow: 2px 2px 19px #444;
     -webkit-box-shadow: 2px 2px 19px #444;
