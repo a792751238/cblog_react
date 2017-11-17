@@ -1,4 +1,5 @@
 /**
+ * 开发配置
  * Created by easterCat on 2017/10/30.
  */
 const merge = require('webpack-merge');

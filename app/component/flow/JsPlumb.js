@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import jp from '../../plugins/jsplumb/jsplumb';
-import './demo.css';
+import './flow.scss';
 import {connect} from 'react-redux';
 import {addOneList} from './flow.actions';
 

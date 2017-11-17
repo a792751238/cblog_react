@@ -1,15 +1,14 @@
-.jp-container {
-    width: 1000px;
+
+.js-layout {
+    width: 1300px;
     height: 700px;
-    .js-layout {
-        width: 1000px;
-        height: 700px;
-        position: relative;
-    }
-    .jtk-demo-header {
-        width: 1000px;
-        height: 100px;
-    }
+    position: relative;
+    overflow: hidden;
+}
+
+.jtk-demo-header {
+    width: 1000px;
+    height: 100px;
 }
 
 .jtk-demo-main {
@@ -20,4 +19,13 @@
         height: 600px;
         position: relative;
     }
+}
+
+.modifi-con {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 300px;
+    height: 700px;
+    background: #f1f1f1;
 }

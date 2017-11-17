@@ -2,6 +2,7 @@
  * Created by easterCat on 2017/11/16.
  */
 import jp from '../../plugins/jsplumb/jsplumb';
+import "jquery-ui/ui/widgets/draggable";
 
 let jsPlumb = jp.jsPlumb;
 
@@ -25,21 +26,21 @@ let instance = jsPlumb.getInstance({
             }
         }],
         //线上的标签
-        ["Label", {
-            location: 0.1,
-            id: "label",
-            cssClass: "aLabel",
-            events: {
-                tap: function () {
-                    alert("hey");
-                }
-            }
-        }]
+        // ["Label", {
+        //     location: 0.1,
+        //     id: "label",
+        //     cssClass: "aLabel",
+        //     events: {
+        //         tap: function () {
+        //             alert("hey");
+        //         }
+        //     }
+        // }]
     ],
     Container: "canvas"
 });
 
-var basicType = {
+let basicType = {
     connector: "StateMachine",
     paintStyle: {stroke: "red", strokeWidth: 4},
     hoverPaintStyle: {stroke: "blue"},
@@ -50,7 +51,7 @@ var basicType = {
 instance.registerConnectionType("basic", basicType);
 
 // 这里是连接线的两个点的样式
-var connectorPaintStyle = {
+let connectorPaintStyle = {
         strokeWidth: 2,
         stroke: "#61B7CF",
         joinstyle: "round",
@@ -69,7 +70,7 @@ var connectorPaintStyle = {
         stroke: "#216477"
     },
     // the definition of source endpoints (the small blue ones)
-    //起始点样式设置
+    //源点样式设置
     sourceEndpoint = {
         endpoint: "Dot",
         paintStyle: {
@@ -116,28 +117,10 @@ var connectorPaintStyle = {
     };
 
 
-function _initFlow() {
+function _initFlow(inincb) {
 // suspend drawing and initialise.
     instance.batch(function () {
-
-        _addEndpoints("Window5", ["TopCenter", "BottomCenter"], ["LeftMiddle", "RightMiddle"]);
-        _addEndpoints("Window4", ["TopCenter", "BottomCenter"], ["LeftMiddle", "RightMiddle"]);
-        _addEndpoints("Window2", ["LeftMiddle", "BottomCenter"], ["TopCenter", "RightMiddle"]);
-        _addEndpoints("Window3", ["RightMiddle", "BottomCenter"], ["LeftMiddle", "TopCenter"]);
-        _addEndpoints("Window1", ["LeftMiddle", "RightMiddle"], ["TopCenter", "BottomCenter"]);
-
-        // 将所有类名为window的对象设置为可拖动对象
-        _addPointsDrag($(".flowchart-demo .window"));
-        _addPointsDrag($(".jtk-demo-header .window"));
-
-
-        // 连接两个点
-        _addConnectLine(["Window2BottomCenter", "Window3TopCenter"]);
-        _addConnectLine(["Window2LeftMiddle", "Window4LeftMiddle"]);
-        _addConnectLine(["Window4TopCenter", "Window4RightMiddle"]);
-        _addConnectLine(["Window3RightMiddle", "Window2RightMiddle"]);
-        _addConnectLine(["Window4BottomCenter", "Window1TopCenter"]);
-        _addConnectLine(["Window3BottomCenter", "Window1BottomCenter"]);
+        inincb();
 
 
         //连接线的点击事件
@@ -195,7 +178,7 @@ function _addEndpoints(toId, sourceAnchors, targetAnchors) {
  */
 function _addPointsDrag(selector) {
     instance.draggable(selector, {grid: [20, 20]});
-};
+}
 
 /**
  * 创建节点之间的连接线
@@ -204,42 +187,42 @@ function _addPointsDrag(selector) {
  */
 function _addConnectLine(arr) {
     instance.connect({uuids: arr, editable: true});
-};
+}
 
 /**
- *
+ * 获取鼠标移动的坐标
+ * @param el
+ * @param movecb 鼠标移动结束的回调
+ * @private
  */
 function _mouseDragEvent(el, movecb) {
-    let emitDiv = $(el);
+    let offset;
+    let wh;
 
-    emitDiv.bind('mousemove', function () {
-        mouseMove();
-    });
-    emitDiv.bind('mouseup', function () {
-        movecb();
-    });
-    function mouseMove(ev) {
-        ev = ev || window.event;
-        let mousePos = mousePosition(ev);
-        document.getElementById('x').innerHTML = mousePos.x;
-        document.getElementById('y').innerHTML = mousePos.y;
-    }
+    $(el).draggable({
+        helper: "clone",
+        containment: ".js-layout",//设置拖动的范围
+        scroll: false,
+        cursor: "pointer",//设置拖动光标总是在中心
+        cursorAt: {top: 30, left: 60},
+        start: function (ev) {
+            wh = {
+                w: $(this).width() / 2,
+                h: $(this).height() / 2
+            }
+        },
+        drag: function (ev) {
+            offset = $(this).offset();
 
-    function mousePosition(ev) {
-        var div_offset = $('.flowchart-demo').offset();
-        if (ev.pageX || ev.pageY) {
-            let _pos = {
-                x: ev.pageX - div_offset.left,
-                y: ev.pageY - div_offset.top
-            };
-            return _pos;
+        },
+        stop: function (ev) {
+            console.log('鼠标的位置', {top: ev.clientY, left: ev.clientX})
+            console.log('拖放元素的位置', {top: offset.top, left: offset.left})
+            let pos = {x: ev.clientX - offset.left - wh.w, y: ev.clientY - offset.top - wh.h - 100};
+            movecb(pos)
         }
-        return {
-            x: ev.clientX + document.body.scrollLeft - div_offset.left,
-            y: ev.clientY + document.body.scrollTop - div_offset.top
-        };
-    }
-};
+    });
+}
 
 export const flow = {
     initFlow: _initFlow,

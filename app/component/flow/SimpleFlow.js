@@ -4,64 +4,65 @@
 
 import React from 'react';
 import jp from '../../plugins/jsplumb/jsplumb';
+import {Input} from 'antd';
 import {flow} from './flow.common';
-import './demo.css';
+import './flow.scss';
 import {connect} from 'react-redux';
-import {addOneList} from './flow.actions';
+import {addOneList, selectOneNode, modifiNode} from './flow.actions';
 
 
 class SimpleFlow extends React.Component {
     constructor(props) {
         super(props);
-        this.addClick = () => {
-            window._addEndpoints("Window6", ["TopCenter", "BottomCenter"], ["LeftMiddle", "RightMiddle"]);
+        this.state = {
+            showModifiCon: false
+        };
+        this.showModifi = (id) => {
+            this.setState({
+                showModifiCon: !this.state.showModifiCon
+            });
+            this.props.selectOneNode(id);
+        };
+
+        this.getChangeValue = (e) => {
+            let value = e.target.value;
+            this.props.modifiNode(value)
         }
     }
 
     componentDidMount() {
         let self = this;
-        flow.initFlow();
-        flow.mouseDragEvent('#moveCreateDiv', function () {
+        flow.initFlow(function () {
+            flow.addEndpoints("Window5", ["TopCenter", "BottomCenter"], ["LeftMiddle", "RightMiddle"]);
+            flow.addEndpoints("Window4", ["TopCenter", "BottomCenter"], ["LeftMiddle", "RightMiddle"]);
+            flow.addEndpoints("Window2", ["LeftMiddle", "BottomCenter"], ["TopCenter", "RightMiddle"]);
+            flow.addEndpoints("Window3", ["RightMiddle", "BottomCenter"], ["LeftMiddle", "TopCenter"]);
+            flow.addEndpoints("Window1", ["LeftMiddle", "RightMiddle"], ["TopCenter", "BottomCenter"]);
+
+            // 将所有类名为window的对象设置为可拖动对象
+            flow.addPointsDrag($(".flowchart-demo .window"));
+
+            // 连接两个点
+            flow.addConnectLine(["Window2BottomCenter", "Window3TopCenter"]);
+            flow.addConnectLine(["Window2LeftMiddle", "Window4LeftMiddle"]);
+            flow.addConnectLine(["Window4TopCenter", "Window4RightMiddle"]);
+            flow.addConnectLine(["Window3RightMiddle", "Window2RightMiddle"]);
+            flow.addConnectLine(["Window4BottomCenter", "Window1TopCenter"]);
+            flow.addConnectLine(["Window3BottomCenter", "Window1BottomCenter"]);
+        });
+        flow.mouseDragEvent('#moveCreateDiv', function (pos) {
             let length = self.props.list.size + 1;
-            self.props.addOneList();
+            self.props.addOneList(pos);
             flow.addEndpoints(`Window${length}`, ["TopCenter", "BottomCenter"], ["LeftMiddle", "RightMiddle"]);
             flow.addPointsDrag(document.getElementById(`flowchartWindow${length}`));
         })
     }
 
     render() {
-        const window_style1 = {
-            top: '408px',
-            left: '60px',
-        };
 
-        const window_style2 = {
-            top: '84px',
-            left: '432px',
-        };
 
-        const window_style3 = {
-            top: '324px',
-            left: '576px',
-        };
-
-        const window_style4 = {
-            top: '276px',
-            left: '264px',
-        };
-        const window_style5 = {
-            top: '176px',
-            left: '264px',
-        };
-        const window_style6 = {
-            top: '76px',
-            left: '164px',
-        };
         return (
             <div className="js-layout">
-                <h3 id="cli">您的鼠标已经被跟踪</h3>
-                <p> X 轴坐标：<span id="x"></span></p>
-                <p> Y 轴坐标：<span id="y"></span></p>
                 <div className="jtk-demo-header">
                     <div className="window" id="moveCreateDiv"><strong>hello wrold</strong></div>
                 </div>
@@ -69,20 +70,28 @@ class SimpleFlow extends React.Component {
                     <div className="jtk-demo-canvas canvas-wide flowchart-demo jtk-surface jtk-surface-nopan"
                          id="canvas">
                         {
-                            console.log(this.props.list)
-                        }
-                        {
-                            this.props.list ? this.props.list.map(i => {
-                                return <div key={i} className="window jtk-node" id={`flowchartWindow${i}`}
-                                            style={window_style6}>
-                                    <strong>{i}</strong><br/><br/></div>
+                            this.props.list ? this.props.list.map((item, index) => {
+                                return <div key={item.get('id')} className="window jtk-node"
+                                            id={`flowchartWindow${item.get('id')}`}
+                                            style={{
+                                                top: `${item.get('position').get('y')}px`,
+                                                left: `${item.get('position').get('x')}px`,
+                                            }}
+                                            onDoubleClick={() => {
+                                                this.showModifi(item.get('id'))
+                                            }}
+                                >
+                                    <strong>{item.get('text') ? item.get('text') : '无'}</strong><br/><br/></div>
                             }) : null
                         }
-                        {/*<div className="window jtk-node" id="flowchartWindow6" style={window_style6}>*/}
-                        {/*<strong>6</strong><br/><br/></div>*/}
                     </div>
                 </div>
-                <h1 onClick={this.addClick}>das</h1>
+                {
+                    this.state.showModifiCon ? <div className="modifi-con">
+                        <Input onChange={this.getChangeValue}
+                               placeholder={this.props.s_list.get('text') ? this.props.s_list.get('text') : '无'}/>
+                    </div> : null
+                }
             </div>
         )
     }
@@ -90,11 +99,12 @@ class SimpleFlow extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        list: state.get('flow').get('list')
+        list: state.get('flow').get('list'),
+        s_list: state.get('flow').get('selectList')
     }
 };
 const mapActionCreators = {
-    addOneList
+    addOneList, selectOneNode, modifiNode
 };
 
 export default connect(mapStateToProps, mapActionCreators)(SimpleFlow);

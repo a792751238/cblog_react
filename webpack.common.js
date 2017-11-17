@@ -1,4 +1,5 @@
 /**
+ * 通用配置
  * Created by easterCat on 2017/10/30.
  */
 const path = require('path');
@@ -9,15 +10,30 @@ module.exports = {
     resolve: {
         modules: [
             path.resolve(__dirname, 'node_modules')
-        ]
+        ],
+        alias: {
+            'jquery': 'jquery/dist/jquery.min',
+        }
     },
-    entry: './app.js',
+    entry: {
+        app: './app.js',
+    },
     output: {
         path: path.resolve(__dirname, 'dist'), //打包的文件夹
         filename: 'app.js',
     },
     module: {
         rules: [
+            // {
+            //     test: require.resolve('jquery'),
+            //     use: [{
+            //         loader: 'expose-loader',
+            //         options: 'jQuery'
+            //     }, {
+            //         loader: 'expose-loader',
+            //         options: '$'
+            //     }]
+            // },
             {
                 test: /\.(js|jsx)$/,
                 exclude: /(node_modules|bower_components)/,
@@ -69,8 +85,8 @@ module.exports = {
     },
     plugins: [
         new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery",
+            "$": "jquery",
+            "jQuery": "jquery",
             "window.jQuery": "jquery"
         })
     ]

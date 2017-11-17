@@ -1,4 +1,5 @@
 /**
+ * 生产配置
  * Created by easterCat on 2017/10/30.
  */
 const merge = require('webpack-merge');
@@ -13,11 +14,15 @@ module.exports = merge(common, {
         rules: [
             {
                 test: /\.css$/,
-                use: ExtractTextPlugin.extract(['style-loader', 'css-loader']),
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: "css-loader"
+                })
             },
             {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
                     use: [{
                         loader: 'css-loader'
                     }, {
@@ -28,6 +33,7 @@ module.exports = merge(common, {
             {
                 test: /\.less$/,
                 use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
                     use: [{
                         loader: 'css-loader'
                     }, {

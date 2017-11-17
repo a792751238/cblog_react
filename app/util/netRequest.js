@@ -19,15 +19,6 @@ export function get(url, type) {
                     console.log(err);
                 }
             );
-        // .done(function (msg) {
-        //     dispatch({
-        //         type: type,
-        //         payload: msg
-        //     });
-        // })
-        // .fail(function (err) {
-        //     console.log(err);
-        // })
     };
 }
 
