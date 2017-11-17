@@ -122,6 +122,9 @@ function _initFlow(inincb) {
     instance.batch(function () {
         inincb();
 
+        // 将所有类名为window的对象设置为可拖动对象
+        flow.addPointsDrag($(".flowchart-demo .window"));
+
 
         //连接线的点击事件
         instance.bind("click", function (conn, originalEvent) {
@@ -216,9 +219,9 @@ function _mouseDragEvent(el, movecb) {
 
         },
         stop: function (ev) {
-            console.log('鼠标的位置', {top: ev.clientY, left: ev.clientX})
-            console.log('拖放元素的位置', {top: offset.top, left: offset.left})
-            let pos = {x: ev.clientX - offset.left - wh.w, y: ev.clientY - offset.top - wh.h - 100};
+            console.log('鼠标的位置', {top: ev.clientY, left: ev.clientX});
+            console.log('拖放元素的位置', {top: offset.top, left: offset.left});
+            let pos = {x: ev.clientX - offset.left - wh.w - 9, y: ev.clientY - offset.top - wh.h - 100 - 8};
             movecb(pos)
         }
     });

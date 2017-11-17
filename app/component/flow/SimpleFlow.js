@@ -39,8 +39,8 @@ class SimpleFlow extends React.Component {
             flow.addEndpoints("Window3", ["RightMiddle", "BottomCenter"], ["LeftMiddle", "TopCenter"]);
             flow.addEndpoints("Window1", ["LeftMiddle", "RightMiddle"], ["TopCenter", "BottomCenter"]);
 
-            // 将所有类名为window的对象设置为可拖动对象
-            flow.addPointsDrag($(".flowchart-demo .window"));
+
+
 
             // 连接两个点
             flow.addConnectLine(["Window2BottomCenter", "Window3TopCenter"]);
