@@ -9,10 +9,11 @@ module.exports = {
     context: path.resolve(__dirname, 'app'),
     resolve: {
         modules: [
-            path.resolve(__dirname, 'node_modules')
+            path.resolve(__dirname, 'node_modules'),
         ],
         alias: {
-            'jquery': 'jquery/dist/jquery.min',
+            'jQuery': 'jquery/dist/jquery',
+            '$': 'jquery/dist/jquery',
         }
     },
     entry: {
@@ -84,10 +85,10 @@ module.exports = {
         hot: true,//开启热替换
     },
     plugins: [
-        new webpack.ProvidePlugin({
-            "$": "jquery",
-            "jQuery": "jquery",
-            "window.jQuery": "jquery"
-        })
+        // new webpack.ProvidePlugin({
+        //     "$": "jquery",
+        //     "jQuery": "jquery",
+        //     "window.jQuery": "jquery"
+        // })
     ]
 };

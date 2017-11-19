@@ -2,10 +2,11 @@
  * Created by easterCat on 2017/10/19.
  */
 import axios from 'axios';
-import $ from 'jquery';
+// import $ from 'jquery';
 import config from '../../app.config';
 
 export function get(url, type) {
+    console.log('netRequest中的jquery',$);
     return dispatch => {
         return $.ajax({type: 'GET', url: url, xhrFields: {withCredentials: true}})
             .then(

@@ -40,8 +40,6 @@ class SimpleFlow extends React.Component {
             flow.addEndpoints("Window1", ["LeftMiddle", "RightMiddle"], ["TopCenter", "BottomCenter"]);
 
 
-
-
             // 连接两个点
             flow.addConnectLine(["Window2BottomCenter", "Window3TopCenter"]);
             flow.addConnectLine(["Window2LeftMiddle", "Window4LeftMiddle"]);
@@ -51,6 +49,7 @@ class SimpleFlow extends React.Component {
             flow.addConnectLine(["Window3BottomCenter", "Window1BottomCenter"]);
         });
         flow.mouseDragEvent('#moveCreateDiv', function (pos) {
+            console.log($)
             let length = self.props.list.size + 1;
             self.props.addOneList(pos);
             flow.addEndpoints(`Window${length}`, ["TopCenter", "BottomCenter"], ["LeftMiddle", "RightMiddle"]);
@@ -59,8 +58,6 @@ class SimpleFlow extends React.Component {
     }
 
     render() {
-
-
         return (
             <div className="js-layout">
                 <div className="jtk-demo-header">
