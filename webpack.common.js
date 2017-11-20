@@ -25,16 +25,16 @@ module.exports = {
     },
     module: {
         rules: [
-            // {
-            //     test: require.resolve('jquery'),
-            //     use: [{
-            //         loader: 'expose-loader',
-            //         options: 'jQuery'
-            //     }, {
-            //         loader: 'expose-loader',
-            //         options: '$'
-            //     }]
-            // },
+            {
+                test: require.resolve('jquery'),
+                use: [{
+                    loader: 'expose-loader',
+                    options: 'jQuery'
+                }, {
+                    loader: 'expose-loader',
+                    options: '$'
+                }]
+            },
             {
                 test: /\.(js|jsx)$/,
                 exclude: /(node_modules|bower_components)/,

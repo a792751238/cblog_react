@@ -3,7 +3,6 @@
  */
 
 import React from 'react';
-import jp from '../../plugins/jsplumb/jsplumb';
 import {Input} from 'antd';
 import {flow} from './flow.common';
 import './flow.scss';
@@ -33,7 +32,7 @@ class SimpleFlow extends React.Component {
     componentDidMount() {
         let self = this;
         flow.initFlow(function () {
-            flow.addEndpoints("Window5", ["TopCenter", "BottomCenter"], ["LeftMiddle", "RightMiddle"]);
+            flow.addEndpoints("Window5", ["TopCenter", "LeftMiddle", "BottomCenter", "RightMiddle"], []);
             flow.addEndpoints("Window4", ["TopCenter", "BottomCenter"], ["LeftMiddle", "RightMiddle"]);
             flow.addEndpoints("Window2", ["LeftMiddle", "BottomCenter"], ["TopCenter", "RightMiddle"]);
             flow.addEndpoints("Window3", ["RightMiddle", "BottomCenter"], ["LeftMiddle", "TopCenter"]);
@@ -49,7 +48,7 @@ class SimpleFlow extends React.Component {
             flow.addConnectLine(["Window3BottomCenter", "Window1BottomCenter"]);
         });
         flow.mouseDragEvent('#moveCreateDiv', function (pos) {
-            console.log($)
+            console.log($);
             let length = self.props.list.size + 1;
             self.props.addOneList(pos);
             flow.addEndpoints(`Window${length}`, ["TopCenter", "BottomCenter"], ["LeftMiddle", "RightMiddle"]);

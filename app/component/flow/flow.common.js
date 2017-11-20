@@ -37,6 +37,7 @@ let instance = jsPlumb.getInstance({
         //     }
         // }]
     ],
+    //设置容器
     Container: "canvas"
 });
 
@@ -118,7 +119,7 @@ let connectorPaintStyle = {
 
 
 function _initFlow(inincb) {
-// suspend drawing and initialise.
+    // suspend drawing and initialise.
     instance.batch(function () {
         inincb();
 
@@ -158,19 +159,24 @@ function _initFlow(inincb) {
  * @private
  */
 function _addEndpoints(toId, sourceAnchors, targetAnchors) {
-    for (let i = 0; i < sourceAnchors.length; i++) {
-        let sourceUUID = toId + sourceAnchors[i];
-        instance.addEndpoint("flowchart" + toId, sourceEndpoint, {
-            anchor: sourceAnchors[i],
-            uuid: sourceUUID
-        });
+    if (sourceAnchors && sourceAnchors.length > 0) {
+        for (let i = 0; i < sourceAnchors.length; i++) {
+            let sourceUUID = toId + sourceAnchors[i];
+            instance.addEndpoint("flowchart" + toId, sourceEndpoint, {
+                anchor: sourceAnchors[i],
+                uuid: sourceUUID
+            });
+        }
     }
-    for (let j = 0; j < targetAnchors.length; j++) {
-        let targetUUID = toId + targetAnchors[j];
-        instance.addEndpoint("flowchart" + toId, targetEndpoint, {
-            anchor: targetAnchors[j],
-            uuid: targetUUID
-        });
+
+    if (targetAnchors && targetAnchors.length > 0) {
+        for (let j = 0; j < targetAnchors.length; j++) {
+            let targetUUID = toId + targetAnchors[j];
+            instance.addEndpoint("flowchart" + toId, targetEndpoint, {
+                anchor: targetAnchors[j],
+                uuid: targetUUID
+            });
+        }
     }
 }
 
