@@ -4,5 +4,5 @@
 module.exports = {
     // server: 'http://www.jiangbingxin.top:3001'
     // server: 'http://192.168.1.14:3001'
-    server: 'http://192.168.1.217:3001'
+    server: 'http://192.168.10.245:3001'
 };

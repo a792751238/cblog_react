@@ -3298,9 +3298,9 @@
 
             var domListeners = [];
 
-            // sets the component associated with listener events. for instance, an overlay delegates
+            // sets the components associated with listener events. for instance, an overlay delegates
             // its events back to a connector. but if the connector is swapped on the underlying connection,
-            // then this component must be changed. This is called by setConnector in the Connection class.
+            // then this components must be changed. This is called by setConnector in the Connection class.
             this.setListenerComponent = function (c) {
                 for (var i = 0; i < domListeners.length; i++) {
                     domListeners[i][3] = c;
@@ -3507,7 +3507,7 @@
                         this.repaint({timestamp: timestamp, recalc: false});
                     }
                 }
-                // get the list of other affected elements, if supported by this component.
+                // get the list of other affected elements, if supported by this components.
                 // for a connection, its the endpoints.  for an endpoint, its the connections! surprise.
                 if (this.getAttachedElements && !ignoreAttachedElements) {
                     _updateAttachedElements(this, hover, _timestamp(), this);
@@ -3614,7 +3614,7 @@
                 if (jp) {
                     jp.fire(id, jp, e);
                     var alias = componentType ? eventAliases[componentType + id] || id : id;
-                    // jsplumb also fires every event coming from components/overlays. That's what the test for `jp.component` is for.
+                    // jsplumb also fires every event coming from components/overlays. That's what the test for `jp.components` is for.
                     _currentInstance.fire(alias, jp.component || jp, e);
                 }
             };
@@ -3626,7 +3626,7 @@
 
             // delegate one event on the container to jsplumb elements. it might be possible to
             // abstract this out: each of endpoint, connection and overlay could register themselves with
-            // jsplumb as "component types" or whatever, and provide a suitable selector. this would be
+            // jsplumb as "components types" or whatever, and provide a suitable selector. this would be
             // done by the renderer (although admittedly from 2.0 onwards we're not supporting vml anymore)
             var _oneDelegate = function (id) {
                 // connections.
@@ -7010,7 +7010,7 @@
                     labelStyle: component.labelStyle,
                     id: _internalLabelOverlayId,
                     component: component,
-                    _jsPlumb: component._jsPlumb.instance  // TODO not necessary, since the instance can be accessed through the component.
+                    _jsPlumb: component._jsPlumb.instance  // TODO not necessary, since the instance can be accessed through the components.
                 },
                 mergedParams = _jp.extend(_params, params);
 
@@ -7068,7 +7068,7 @@
 
     _jp.OverlayCapableJsPlumbUIComponent.applyType = function (component, t) {
         if (t.overlays) {
-            // loop through the ones in the type. if already present on the component,
+            // loop through the ones in the type. if already present on the components,
             // dont remove or re-add.
             var keep = {}, i;
 
@@ -11648,7 +11648,7 @@
         _jp.jsPlumbUIComponent.apply(this, arguments);
         AbstractOverlay.apply(this, arguments);
 
-        // hand off fired events to associated component.
+        // hand off fired events to associated components.
         var _f = this.fire;
         this.fire = function () {
             _f.apply(this, arguments);
@@ -11686,7 +11686,7 @@
                 div.style.oTransform = ts;
                 div.style.transform = ts;
 
-                // write the related component into the created element
+                // write the related components into the created element
                 div._jsPlumb = this;
 
                 if (params.visible === false) {

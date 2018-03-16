@@ -7,7 +7,6 @@ import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 import {Icon} from 'antd';
 
-
 class RecordAudio extends React.Component {
     constructor(props) {
         super(props);

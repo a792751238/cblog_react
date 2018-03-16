@@ -7,12 +7,11 @@ import './style/app.scss';
 import "babel-polyfill";
 import React from 'react';
 import ReactDom from 'react-dom';
-import App from './component/App';
+import App from './modules/App';
 import {BrowserRouter, Route} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import store from './store/store';
-import {logged} from './component/user/user.actions';
-
+import {logged} from './modules/user/user.actions';
 Promise.all([
     store.dispatch(logged())
 ]).then(() => {
@@ -30,7 +29,7 @@ Promise.all([
 // ReactDom.render(
 //     <Provider store={store}>
 //         <BrowserRouter>
-//             <Route path="/" component={App}/>
+//             <Route path="/" components={App}/>
 //         </BrowserRouter>
 //     </Provider>
 //     ,

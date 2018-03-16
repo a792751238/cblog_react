@@ -10,8 +10,8 @@ import {addOneList} from './flow.actions';
 class JsPlumb extends React.Component {
     constructor(props) {
         super(props);
-        this.addClick=()=>{
-            
+        this.addClick = () => {
+
         }
     }
 
