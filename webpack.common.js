@@ -14,7 +14,8 @@ module.exports = {
         alias: {
             'jQuery': 'jquery/dist/jquery',
             '$': 'jquery/dist/jquery',
-        }
+        },
+        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
     },
     entry: {
         app: './app.js',
@@ -35,6 +36,13 @@ module.exports = {
                     options: '$'
                 }]
             },
+            {
+                test: /\.tsx?$/,
+                use: [{
+                    loader: "ts-loader"
+                }]
+            }
+            ,
             {
                 test: /\.(js|jsx)$/,
                 exclude: /(node_modules|bower_components)/,

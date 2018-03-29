@@ -21,12 +21,15 @@ class Registering extends React.Component {
             e.preventDefault();
             this.props.form.validateFields((err, values) => {
                 if (!err) {
-
                     let user = {};
-                    user.avatar = values.avatar[0].response ? values.avatar[0].response._id : null;
-                    user.description = values.description;
-                    user.password = values.password;
-                    user.username = values.username;
+                    try {
+                        user.avatar = values.avatar && values.avatar[0].response ? values.avatar[0].response._id : null;
+                        user.description = values.description;
+                        user.password = values.password;
+                        user.username = values.username;
+                    } catch (error) {
+                        console.log(error);
+                    }
 
                     this.props.register(user)
                         .then((result) => {

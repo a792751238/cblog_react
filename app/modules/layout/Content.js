@@ -8,6 +8,7 @@ import CreateArticle from '../article/createArticle';
 import Articles from '../article/Articles';
 import Article from '../article/Article';
 import Flow from '../flow/SimpleFlow';
+import HelloCon from '../type/HelloCon.tsx';
 
 class Content extends React.Component {
     render() {
@@ -18,6 +19,7 @@ class Content extends React.Component {
                 <Route path="/home/createArticle" component={CreateArticle}/>
                 <Route path="/home/articles" component={Articles}/>
                 <Route path="/home/article/:id" component={Article}/>
+                <Route path="/home/type" component={HelloCon}/>
             </div>
         )
     }

@@ -41,6 +41,12 @@ class Sidebar extends React.Component {
                             <span>流程图</span>
                         </NavLink>
                     </Menu.Item>
+                    <Menu.Item key="type">
+                        <NavLink to="/home/type">
+                            <Icon type="user"/>
+                            <span>TypeScript</span>
+                        </NavLink>
+                    </Menu.Item>
                 </Menu>
             </div>
         )
