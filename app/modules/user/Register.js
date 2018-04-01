@@ -73,7 +73,7 @@ class Registering extends React.Component {
         } = this.props.form;
 
         const upload_props = {
-            name: "avatar",
+            name: "picture",
             listType: 'picture',
             multiple: false,
             action: `${server}/file/picture`,
