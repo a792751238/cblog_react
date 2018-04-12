@@ -18,7 +18,7 @@ module.exports = {
         extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
     },
     entry: {
-        app: './app.js',
+        app: ['babel-polyfill', './app.js'],
     },
     output: {
         path: path.resolve(__dirname, 'dist'), //打包的文件夹

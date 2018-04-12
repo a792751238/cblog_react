@@ -47,6 +47,12 @@ class Sidebar extends React.Component {
                             <span>TypeScript</span>
                         </NavLink>
                     </Menu.Item>
+                    <Menu.Item key="gante">
+                        <NavLink to="/home/gante">
+                            <Icon type="user"/>
+                            <span>甘特图</span>
+                        </NavLink>
+                    </Menu.Item>
                 </Menu>
             </div>
         )

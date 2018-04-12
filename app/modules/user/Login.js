@@ -86,7 +86,7 @@ class Logining extends React.Component {
                             登录
                         </Button>
                         <Link to="/register">
-                            <a href="">注册</a>
+                            <div href="">注册</div>
                         </Link>
                     </FormItem>
                 </Form>
