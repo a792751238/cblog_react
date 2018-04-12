@@ -92,7 +92,7 @@
 /* === RIGHT PANEL === */
 
 .fn-gantt .rightPanel {
-    overflow: hidden;
+    overflow: auto;
 }
 
 .fn-gantt .dataPanel {
@@ -105,6 +105,7 @@
     background-image: url(img/grid.png);
     background-repeat: repeat;
     position: relative;
+    left: 0px !important;
 }
 
 .fn-gantt .row.header {

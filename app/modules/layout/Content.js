@@ -8,7 +8,7 @@ import CreateArticle from '../article/createArticle';
 import Articles from '../article/Articles';
 import Article from '../article/Article';
 import Flow from '../flow/SimpleFlow';
-import Gante from '../gante/Gante';
+import Gante from '../gantt/Gantt';
 // import HelloCon from '../type/HelloCon.tsx';
 
 class Content extends React.Component {
