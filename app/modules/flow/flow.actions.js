@@ -2,7 +2,7 @@
  * Created by easterCat on 2017/11/16.
  */
 import {server} from '../../../app.config';
-import {get, post, remove, update} from '../../util/netRequest';
+import {get, post, remove, update} from '../../utils/netRequest';
 
 export const ADD_ONE_LIST = 'ADD_ONE_LIST';
 export const SELECT_ONE_NODE = 'SELECT_ONE_NODE';

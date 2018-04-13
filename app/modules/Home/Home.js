@@ -15,7 +15,7 @@ class Home extends React.Component {
         this.state = {
             collapsed: false
         };
-        this.ress = ['audio', 'createArticle', 'articles', 'article', 'flow'];
+        this.ress = ['audio', 'createArticle', 'articles', 'article', 'flow', 'gantt', 'ui'];
         this.res = null;
         const match = matchPath(this.props.history.location.pathname, {
             path: '/home/:res'
@@ -33,7 +33,7 @@ class Home extends React.Component {
 
     componentWillMount() {
         if (!this.res || !this.res.length || this.ress.indexOf(this.res) === -1) {
-            this.props.history.replace(`/home/flow`)
+            this.props.history.replace(`/home/ui`)
         }
     }
 

@@ -2,7 +2,7 @@
  * Created by easterCat on 2017/10/25.
  */
 import {server} from '../../../app.config';
-import {get, post, remove, update} from '../../util/netRequest';
+import {get, post, remove, update} from '../../utils/netRequest';
 
 export const REGISTER = 'REGISTER';
 export const LOGIN = 'LOGIN';

@@ -16,6 +16,7 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-import": "^1.6.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
@@ -48,6 +49,10 @@
   "dependencies": {
     "antd": "^2.13.6",
     "axios": "^0.16.2",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "blueimp-md5": "^2.10.0",
+    "curry": "^1.2.0",
+    "easter-utils": "git+ssh://git@github.com/a792751238/easter_utils.git",
     "github-markdown-css": "^2.9.0",
     "gojs": "^1.8.2",
     "immutable": "^3.8.2",
@@ -55,6 +60,7 @@
     "less": "^2.7.2",
     "material-ui": "^0.20.0",
     "node-sass": "^4.8.3",
+    "object-assign": "^4.1.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-markdown": "^2.5.0",
@@ -66,6 +72,7 @@
     "redux-freeze": "^0.1.5",
     "redux-immutable": "^4.0.0",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "underscore": "^1.8.3"
   }
 }

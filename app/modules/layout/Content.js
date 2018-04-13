@@ -9,6 +9,7 @@ import Articles from '../article/Articles';
 import Article from '../article/Article';
 import Flow from '../flow/SimpleFlow';
 import Gante from '../gantt/Gantt';
+import Ui from '../ui/Ui';
 // import HelloCon from '../type/HelloCon.tsx';
 
 class Content extends React.Component {
@@ -21,6 +22,7 @@ class Content extends React.Component {
                 <Route path="/home/articles" component={Articles}/>
                 <Route path="/home/article/:id" component={Article}/>
                 <Route path="/home/gante" component={Gante}/>
+                <Route path="/home/ui" component={Ui}/>
             </div>
         )
     }

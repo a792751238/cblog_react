@@ -88,9 +88,9 @@ module.exports = {
     devServer: {
         contentBase: './app',//为一个目录下的文件提供本地服务器，在这里设置其所在目录
         historyApiFallback: true,//跳转将指向index.html
-        // inline: true,//开启自动刷新页面
+        inline: true,//开启自动刷新页面
         port: 1333,//设置监听端口3000
-        // hot: true,//开启热替换
+        hot: true,//开启热替换
     },
     plugins: [
         // new webpack.ProvidePlugin({
