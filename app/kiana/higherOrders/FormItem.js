@@ -8,7 +8,6 @@ import curry from 'curry'
 import {shallowEqual} from '../utils/objects'
 import * as Validation from '../utils/validation'
 // import Popover from '../Tooltip/FormItemPopover'
-
 // import _inputs from '../styles/_input.scss'
 
 export const COMPONENTS = {}
