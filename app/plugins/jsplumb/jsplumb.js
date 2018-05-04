@@ -563,8 +563,8 @@
          * @name Biltong.intersects
          * @function
          * @desc Calculates whether or not the two rectangles intersect.
-         * @param {Rectangle} r1 First rectangle, as a js object in the form `{x:.., y:.., w:.., h:..}`
-         * @param {Rectangle} r2 Second rectangle, as a js object in the form `{x:.., y:.., w:.., h:..}`
+         * @param {Rectangle} r1 First rectangle, as a layui object in the form `{x:.., y:.., w:.., h:..}`
+         * @param {Rectangle} r2 Second rectangle, as a layui object in the form `{x:.., y:.., w:.., h:..}`
          * @return {Boolean} True if the rectangles intersect, false otherwise.
          */
         _intersects = Biltong.intersects = function(r1, r2) {
@@ -584,8 +584,8 @@
          * @name Biltong.encloses
          * @function
          * @desc Calculates whether or not r2 is completely enclosed by r1.
-         * @param {Rectangle} r1 First rectangle, as a js object in the form `{x:.., y:.., w:.., h:..}`
-         * @param {Rectangle} r2 Second rectangle, as a js object in the form `{x:.., y:.., w:.., h:..}`
+         * @param {Rectangle} r1 First rectangle, as a layui object in the form `{x:.., y:.., w:.., h:..}`
+         * @param {Rectangle} r2 Second rectangle, as a layui object in the form `{x:.., y:.., w:.., h:..}`
          * @param {Boolean} [allowSharedEdges=false] If true, the concept of enclosure allows for one or more edges to be shared by the two rectangles.
          * @return {Boolean} True if r1 encloses r2, false otherwise.
          */

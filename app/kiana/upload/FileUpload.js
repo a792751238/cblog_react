@@ -60,21 +60,16 @@ class FileUpload extends Component {
     }
 
     render() {
-        const {accept, grid, limit, multiple, style, children, content, disabled, readOnly, value, files} = this.props
+        const {accept, grid, limit, multiple, style, children, content, disabled, readOnly, value, files} = this.props;
 
         // let allowAdd = !disabled && !readOnly && (value.length + Object.keys(files).length) < limit
 
-        let allowAdd = true
+        let allowAdd = true;
 
         return (
-            <div style={{
-                width: '100px',
-                height: '100px',
-                background: 'red'
-            }}>
+            <div className="file-upload">
                 {
-                    allowAdd && <div onClick={this.addFile}>
-                        {this.props.children}
+                    allowAdd && <div onClick={this.addFile} className="file-upload-con">
                         {children || content}
                         <InputFile ref={(input) => {
                             this.input = input

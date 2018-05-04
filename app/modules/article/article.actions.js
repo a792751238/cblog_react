@@ -2,7 +2,7 @@
  * Created by easterCat on 2017/10/16.
  */
 import {server} from '../../../app.config';
-import {get, post, remove, update} from '../../utils/netRequest';
+import {get, post, remove} from '../../utils/netRequest';
 
 export const ADD_ONE_USER = 'ADD_ONE_USER';
 export const GET_ALL_AUTHORS = 'GET_ALL_AUTHORS';

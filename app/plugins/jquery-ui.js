@@ -9208,7 +9208,7 @@ var widgetsCheckboxradio = $.ui.checkboxradio;
 
 
 /*!
- * jQuery UI Button 1.12.1
+ * jQuery UI button 1.12.1
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -9216,7 +9216,7 @@ var widgetsCheckboxradio = $.ui.checkboxradio;
  * http://jquery.org/license
  */
 
-//>>label: Button
+//>>label: button
 //>>group: Widgets
 //>>description: Enhances a form with themeable buttons.
 //>>docs: http://api.jqueryui.com/button/
@@ -12606,7 +12606,7 @@ var widgetsDialog = $.ui.dialog;
 //>>label: Progressbar
 //>>group: Widgets
 // jscs:disable maximumLineLength
-//>>description: Displays a status.js indicator for loading state, standard percentage, and other progress indicators.
+//>>description: Displays a status.layui indicator for loading state, standard percentage, and other progress indicators.
 // jscs:enable maximumLineLength
 //>>docs: http://api.jqueryui.com/progressbar/
 //>>demos: http://jqueryui.com/progressbar/
@@ -14389,7 +14389,7 @@ $.widget( "ui.spinner", {
 
 		this.element.attr( "role", "spinbutton" );
 
-		// Button bindings
+		// button bindings
 		this.buttons = this.uiSpinner.children( "a" )
 			.attr( "tabIndex", -1 )
 			.attr( "aria-hidden", true )
@@ -16806,7 +16806,7 @@ jQuery.cssHooks.borderColor = {
 
 // Basic color names only.
 // Usage of any of the other color names requires adding yourself or including
-// jquery.color.svg-names.js.
+// jquery.color.svg-names.layui.
 colors = jQuery.Color.names = {
 
 	// 4.1. Basic color keywords

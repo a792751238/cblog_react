@@ -38,7 +38,8 @@ class InputFile extends React.Component {
                        height: 0,
                        opacity: 0
                    }}
-                   onChange={this.props.onChange}/>
+                   onChange={this.props.onChange}
+            />
         )
     }
 }

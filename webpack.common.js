@@ -41,18 +41,17 @@ module.exports = {
                 use: [{
                     loader: "ts-loader"
                 }]
-            }
-            ,
+            },
             {
                 test: /\.(js|jsx)$/,
                 exclude: /(node_modules|bower_components)/,
-                use: {
+                use: [{
                     loader: 'babel-loader',
                     options: {
                         presets: ['env', 'react'],
                         plugins: [require('babel-plugin-transform-object-rest-spread')]
                     }
-                }
+                }]
             },
             {
                 test: /\.(woff|woff2|ttf|eot|svg)(\?]?.*)?$/,

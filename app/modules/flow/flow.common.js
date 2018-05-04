@@ -210,7 +210,7 @@ function _mouseDragEvent(el, movecb) {
 
     $(el).draggable({
         helper: "clone",
-        containment: ".js-layout",//设置拖动的范围
+        containment: ".layui-layout",//设置拖动的范围
         scroll: false,
         cursor: "pointer",//设置拖动光标总是在中心
         cursorAt: {top: 30, left: 60},

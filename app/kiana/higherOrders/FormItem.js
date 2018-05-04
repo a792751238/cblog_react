@@ -80,7 +80,7 @@ export default function FormItem(Component) {
             const {itemUnbind} = this.context
             itemUnbind && itemUnbind(name)
 
-            // remove FormControl validation status.js
+            // remove FormControl validation status.layui
             onValidate && onValidate(name, true)
         }
 
