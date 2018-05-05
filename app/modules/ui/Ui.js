@@ -5,6 +5,10 @@
 import React from 'react';
 import FileUpload from '../../kiana/upload/FileUpload';
 import Button from '../../kiana/button/Button';
+import ButtonGroup from '../../kiana/button/ButtonGroup';
+import ButtonContainer from '../../kiana/button/ButtonContainer';
+import Icon from '../../kiana/icon/Icon';
+
 class Ui extends React.Component {
     constructor(props) {
         super(props);
@@ -86,8 +90,80 @@ class Ui extends React.Component {
                         }}
                         href="www.baidu.com"
                 >
-                    我是按钮
+                    <Icon icon='emo-happy'/>我是按钮
                 </Button>
+                <p style={{padding: '20px'}}>字标</p>
+                <Icon icon='emo-happy' size={40}/>
+                <p style={{padding: '20px'}}>按钮组</p>
+                <ButtonGroup >
+                    <Button type="normal"
+                            size="lg"
+                    >
+                        <Icon icon='emo-happy'/>我是按钮
+                    </Button>
+                    <Button type="normal"
+                            size="md"
+                    >
+                        <Icon icon='emo-happy'/>我是按钮
+                    </Button>
+                    <Button type="normal"
+                            size="sm"
+                    >
+                        <Icon icon='emo-happy'/>我是按钮
+                    </Button>
+                </ButtonGroup>
+                <ButtonGroup >
+                    <Button type="normal"
+                            size="lg"
+                    >
+                        <Icon icon='emo-happy'/>我是按钮
+                    </Button>
+                    <Button type="normal"
+                            size="md"
+                    >
+                        <Icon icon='emo-happy'/>我是按钮
+                    </Button>
+                    <Button type="normal"
+                            size="sm"
+                    >
+                        <Icon icon='emo-happy'/>我是按钮
+                    </Button>
+                </ButtonGroup>
+                <ButtonGroup >
+                    <Button type="normal"
+                            size="lg"
+                    >
+                        <Icon icon='emo-happy'/>我是按钮
+                    </Button>
+                    <Button type="normal"
+                            size="md"
+                    >
+                        <Icon icon='emo-happy'/>我是按钮
+                    </Button>
+                    <Button type="normal"
+                            size="sm"
+                    >
+                        <Icon icon='emo-happy'/>我是按钮
+                    </Button>
+                </ButtonGroup>
+                <ButtonContainer >
+                    <Button type="normal"
+                            size="lg"
+                    >
+                        <Icon icon='emo-happy'/>我是按钮
+                    </Button>
+                    <Button type="normal"
+                            size="md"
+                    >
+                        我是按钮
+                    </Button>
+                    <Button type="normal"
+                            size="sm"
+                    >
+                        <Icon icon='emo-happy'/>我是按钮
+                    </Button>
+                </ButtonContainer>
+                <Icon icon='spin2' size={40} spin={true}/>
             </div>
         )
     }

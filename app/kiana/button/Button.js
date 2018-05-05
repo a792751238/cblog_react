@@ -7,7 +7,6 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-
 export default class Button extends Component {
     constructor(props) {
         super(props);
@@ -33,7 +32,6 @@ export default class Button extends Component {
 
         others.onClick = this.handleClick;
 
-
         if (others.href) {
             element = (
                 <a className={className} {...others}>
@@ -51,7 +49,6 @@ export default class Button extends Component {
                 </button>
             )
         }
-
         return element;
     }
 }
@@ -63,7 +60,6 @@ Button.propTypes = {
     once: PropTypes.bool,
     size: PropTypes.oneOf(['lg', 'md', 'sm', 'xs']),
     style: PropTypes.object,
-    tag: PropTypes.string,
     throttle: PropTypes.number,
     type: PropTypes.oneOf(['primary', 'normal', 'default', 'warning', 'danger', 'disabled']),
     shape: PropTypes.oneOf(['', 'circle']),
@@ -72,6 +68,5 @@ Button.propTypes = {
 Button.defaultProps = {
     type: 'default',
     size: 'md',
-    tag: 'button',
     shape: '',
 };
