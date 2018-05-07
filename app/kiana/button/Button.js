@@ -33,7 +33,6 @@ export default class Button extends Component {
 
         others.onClick = this.handleClick;
 
-
         if (others.href) {
             element = (
                 <a className={className} {...others}>

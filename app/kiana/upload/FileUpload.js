@@ -90,7 +90,7 @@ class FileUpload extends Component {
 
 FileUpload.defaultProps = {
     textTpl: '{name}'
-}
+};
 
 export default compose(
     FormItem.register('upload', {valueType: 'array'}),
