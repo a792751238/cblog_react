@@ -44,7 +44,7 @@ class InputFile extends React.Component {
     }
 }
 
-InputFile.PropTypes = {
+InputFile.propTypes = {
     accept: PropTypes.string,
     multiple: PropTypes.bool,
     onChange: PropTypes.func,
