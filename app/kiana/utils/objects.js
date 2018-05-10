@@ -6,7 +6,7 @@ import assign from 'object-assign'
 
 export const deepEqual = _deepEqual
 export const objectAssign = assign
-export function shallowEqual (objA, objB) {
+export function shallowEqual(objA, objB) {
     if (objA === objB) {
         return true
     }

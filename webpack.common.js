@@ -14,6 +14,7 @@ module.exports = {
         alias: {
             'jQuery': 'jquery/dist/jquery',
             '$': 'jquery/dist/jquery',
+            Util$: path.resolve(__dirname, './utils/kiana/'),
         },
         extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
     },
