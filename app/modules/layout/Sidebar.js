@@ -59,6 +59,12 @@ class Sidebar extends React.Component {
                             <span>ui</span>
                         </NavLink>
                     </Menu.Item>
+                    <Menu.Item key="table">
+                        <NavLink to="/home/table">
+                            <Icon type="user"/>
+                            <span>table</span>
+                        </NavLink>
+                    </Menu.Item>
                 </Menu>
             </div>
         )

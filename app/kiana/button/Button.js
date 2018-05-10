@@ -57,10 +57,8 @@ Button.propTypes = {
     children: PropTypes.any,
     className: PropTypes.string,
     onClick: PropTypes.func,
-    once: PropTypes.bool,
     size: PropTypes.oneOf(['lg', 'md', 'sm', 'xs']),
     style: PropTypes.object,
-    throttle: PropTypes.number,
     type: PropTypes.oneOf(['primary', 'normal', 'default', 'warning', 'danger', 'disabled']),
     shape: PropTypes.oneOf(['', 'circle']),
 };

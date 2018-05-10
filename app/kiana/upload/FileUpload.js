@@ -2,10 +2,7 @@
  * Created by easterCat on 2018/3/14.
  */
 import React, {Component} from 'react'
-import classnames from 'classnames'
-import PropTypes from 'prop-types'
-import {getGrid} from '../utils/grids'
-import {compose} from '../utils/compose'
+import compose from '../utils/compose'
 import {substitute} from '../utils/strings'
 import FormItem from '../higherOrders/FormItem'
 import Upload from './Upload'
