@@ -1,4 +1,4 @@
-import '../app/public/index.html';
+import './public/index.html';
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 

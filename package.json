@@ -6,11 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "set NODE_ENV=production&&webpack -p --config webpack.pro.js",
-    "start": "webpack-dev-server --devtool eval --progress --colors --config webpack.dev.js ",
-    "ts_start": "react-scripts-ts start",
-    "ts_build": "react-scripts-ts build",
-    "ts_test": "react-scripts-ts test --env=jsdom",
-    "ts_eject": "react-scripts-ts eject"
+    "start": "webpack-dev-server --devtool eval --progress --colors --config webpack.dev.js",
+    "ts_start": "webpack-dev-server --devtool eval --progress --colors --config webpack.ts.dev.js",
+    "ts_build": "set NODE_ENV=production&&webpack -p --config webpack.ts.pro.js"
   },
   "author": "easterCat",
   "license": "ISC",
