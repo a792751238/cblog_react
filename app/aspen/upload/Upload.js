@@ -8,7 +8,7 @@ import {deepEqual, objectAssign} from '../utils/objects'
 import {getLang} from '../lang'
 import ajax from './util/ajaxRequest'
 import {UPLOADING, ERROR} from './status'
-import _ from 'easter-utils'
+import _ from 'Util'
 
 export default function (Origin) {
     class Upload extends Component {
