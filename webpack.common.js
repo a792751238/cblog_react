@@ -6,7 +6,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-    context: path.resolve(__dirname, 'app'),
+    context: path.resolve(__dirname, 'ts'),
     resolve: {
         modules: [
             path.resolve(__dirname, 'node_modules'),
@@ -16,10 +16,11 @@ module.exports = {
             '$': 'jquery/dist/jquery',
             Util$: path.resolve(__dirname, './utils/kiana/'),
         },
-        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".json"]
     },
     entry: {
-        app: ['babel-polyfill', './app.js'],
+        // app: ['babel-polyfill', './app.js'],
+        app: './app.tsx'
     },
     output: {
         path: path.resolve(__dirname, 'dist'), //打包的文件夹
@@ -86,7 +87,7 @@ module.exports = {
         ]
     },
     devServer: {
-        contentBase: './app',//为一个目录下的文件提供本地服务器，在这里设置其所在目录
+        contentBase: './ts',//为一个目录下的文件提供本地服务器，在这里设置其所在目录
         historyApiFallback: true,//跳转将指向index.html
         inline: true,//开启自动刷新页面
         port: 1333,//设置监听端口3000

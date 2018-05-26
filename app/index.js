@@ -1,7 +1,7 @@
 /**
  * Created by easterCat on 2017/10/9.
  */
-import './index.html';
+import './public/index.html';
 import './style/app.scss';
 import './layui/layui/layui/css/layui.css';
 // import "babel-polyfill";
@@ -12,7 +12,6 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import store from './store/store';
 import {logged} from './modules/user/user.actions';
-
 
 Promise.all([
     store.dispatch(logged())
