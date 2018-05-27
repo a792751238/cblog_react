@@ -1,13 +1,28 @@
 import * as React from 'react';
 import HelloCon from './test/HelloCon';
 import Tag from './components/tag/Tag';
+import Nav from './components/nav/Nav';
 
 export interface Props {
     name: string;
     enthusiasmLevel?: number;
 }
 
-export default class Hello extends React.Component<Props, object> {
+export default class Hello extends React.Component<Props, any> {
+    constructor(props) {
+        super(props);
+        this.onSelect = this.onSelect.bind(this);
+        this.onClick = this.onClick.bind(this);
+    }
+
+    onSelect() {
+        console.log(1);
+    };
+
+    onClick() {
+        alert(2);
+    };
+
     render() {
         const {name, enthusiasmLevel = 1} = this.props;
 
@@ -24,6 +39,12 @@ export default class Hello extends React.Component<Props, object> {
                 <Tag shape="dot" color="orange"/>
                 <Tag color="orange">hello world</Tag>
                 <Tag shape="rim">hello world</Tag>
+
+                <Nav active="foo" onSelect={this.onSelect}>
+                    <Nav.Item id="foo" onClick={this.onClick}>foo</Nav.Item>
+                    <Nav.Item id="bar">bar</Nav.Item>
+                    <Nav.Item id="baz">baz</Nav.Item>
+                </Nav>
             </div>
         );
     }
