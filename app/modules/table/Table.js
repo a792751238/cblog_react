@@ -8,6 +8,7 @@ import ButtonGroup from '../../aspen/button/ButtonGroup';
 import ButtonContainer from '../../aspen/button/ButtonContainer';
 import Icon from '../../aspen/icon/Icon';
 import Table from '../../aspen/table/Table';
+import Tag from '../../aspen/tag/Tag';
 
 class Ui2 extends React.Component {
     constructor(props) {
@@ -48,6 +49,9 @@ class Ui2 extends React.Component {
                 <Table columns={columns}
                        dataSource={datas}
                 />
+                <Tag shape="dot"/>
+                <Tag color="black">hello world</Tag>
+                <Tag shape="rim">hello world</Tag>
             </div>
         )
     }

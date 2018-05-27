@@ -138,7 +138,7 @@ function _initFlow(inincb) {
             init(connInfo.connection);
         });
         instance.bind("connectionDrag", function (connection) {
-            console.log("connection " + connection.id + " is being dragged. suspendedElement is ", connection.suspendedElement, " of type ", connection.suspendedElementType);
+            console.log("connection " + connection.id + " is being dragged. suspendedElement is ", connection.suspendedElement, " of test ", connection.suspendedElementType);
         });
         instance.bind("connectionDragStop", function (connection) {
             console.log("connection " + connection.id + " was dragged");

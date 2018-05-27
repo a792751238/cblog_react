@@ -15,6 +15,7 @@ module.exports = {
             'jQuery': 'jquery/dist/jquery',
             '$': 'jquery/dist/jquery',
             Util$: path.resolve(__dirname, './utils/kiana/'),
+            Lay$: path.resolve(__dirname, 'alias/layui/layui/layui/css/layui.css')
         },
         extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".json"]
     },

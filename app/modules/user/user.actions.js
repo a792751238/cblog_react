@@ -15,7 +15,6 @@ export function register(data) {
     return post(`${server}/user/register`, data, REGISTER);
 }
 export function login(data) {
-    alert(data)
     return post(`${server}/user/login`, data, LOGIN);
 }
 

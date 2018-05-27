@@ -29,7 +29,7 @@ const reducer = combineReducers(reducers);
 
 /**
  * function createStore(reducer,preloadedState,enhancer){ }
- * @type {Store<S>}
+ * @test {Store<S>}
  */
 const store = createStore(
     reducer,

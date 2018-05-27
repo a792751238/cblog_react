@@ -98,19 +98,19 @@ function GooFlow(bgDiv, property) {
         this.$tool = this.$bgDiv.find(".GooFlow_tool div");
         //未加代码：加入绘图工具按钮
         this.$tool.append("<div style='margin-bottom:5px'><span/><span/><span/><span/></div>"
-            + "<a href='javascript:void(0)' type='cursor' class='GooFlow_tool_btndown' id='" + this.$id + "_btn_cursor'><i class='ico_cursor'/></a>"
-            + "<a href='javascript:void(0)' type='direct' class='GooFlow_tool_btn' id='" + this.$id + "_btn_direct'><i class='ico_direct'/></a>"
+            + "<a href='javascript:void(0)' test='cursor' class='GooFlow_tool_btndown' id='" + this.$id + "_btn_cursor'><i class='ico_cursor'/></a>"
+            + "<a href='javascript:void(0)' test='direct' class='GooFlow_tool_btn' id='" + this.$id + "_btn_direct'><i class='ico_direct'/></a>"
         );
         if (property.toolBtns && property.toolBtns.length > 0) {
             tmp = "<span/>";
             for (var i = 0; i < property.toolBtns.length; ++i) {
-                tmp += "<a href='javascript:void(0)' type='" + property.toolBtns[i] + "' id='" + this.$id + "_btn_" + property.toolBtns[i].split(" ")[0] + "' class='GooFlow_tool_btn'><i class='ico_" + property.toolBtns[i] + "'/></a>";//加入自定义按钮
+                tmp += "<a href='javascript:void(0)' test='" + property.toolBtns[i] + "' id='" + this.$id + "_btn_" + property.toolBtns[i].split(" ")[0] + "' class='GooFlow_tool_btn'><i class='ico_" + property.toolBtns[i] + "'/></a>";//加入自定义按钮
             }
             this.$tool.append(tmp);
         }
         //加入区域划分框工具开关按钮
         if (property.haveGroup)
-            this.$tool.append("<span/><a href='javascript:void(0)' type='group' class='GooFlow_tool_btn' id='" + this.$id + "_btn_group'><i class='ico_group'/></a>");
+            this.$tool.append("<span/><a href='javascript:void(0)' test='group' class='GooFlow_tool_btn' id='" + this.$id + "_btn_group'><i class='ico_group'/></a>");
         toolWidth = 31;
         this.$nowType = "cursor";
         //绑定各个按钮的点击事件
@@ -322,37 +322,37 @@ function GooFlow(bgDiv, property) {
 
         //下面绑定当结点/线/分组块的一些操作事件,这些事件可直接通过this访问对象本身
         //当操作某个单元（结点/线/分组块）被添加时，触发的方法，返回FALSE可阻止添加事件的发生
-        //格式function(id，type,json)：id是单元的唯一标识ID,type是单元的种类,有"node","line","area"三种取值,json即addNode,addLine或addArea方法的第二个传参json.
+        //格式function(id，test,json)：id是单元的唯一标识ID,type是单元的种类,有"node","line","area"三种取值,json即addNode,addLine或addArea方法的第二个传参json.
         this.onItemAdd = null;
         //当操作某个单元（结点/线/分组块）被删除时，触发的方法，返回FALSE可阻止删除事件的发生
-        //格式function(id，type)：id是单元的唯一标识ID,type是单元的种类,有"node","line","area"三种取值
+        //格式function(id，test)：id是单元的唯一标识ID,type是单元的种类,有"node","line","area"三种取值
         this.onItemDel = null;
         //当操作某个单元（结点/分组块）被移动时，触发的方法，返回FALSE可阻止移动事件的发生
-        //格式function(id，type,left,top)：id是单元的唯一标识ID,type是单元的种类,有"node","area"两种取值，线line不支持移动,left是新的左边距坐标，top是新的顶边距坐标
+        //格式function(id，test,left,top)：id是单元的唯一标识ID,type是单元的种类,有"node","area"两种取值，线line不支持移动,left是新的左边距坐标，top是新的顶边距坐标
         this.onItemMove = null;
         //当操作某个单元（结点/线/分组块）被重命名时，触发的方法，返回FALSE可阻止重命名事件的发生
-        //格式function(id,name,type)：id是单元的唯一标识ID,type是单元的种类,有"node","line","area"三种取值,name是新的名称
+        //格式function(id,name,test)：id是单元的唯一标识ID,type是单元的种类,有"node","line","area"三种取值,name是新的名称
         this.onItemRename = null;
         //当操作某个单元（结点/线）被由不选中变成选中时，触发的方法，返回FALSE可阻止选中事件的发生
-        //格式function(id,type)：id是单元的唯一标识ID,type是单元的种类,有"node","line"两种取值,"area"不支持被选中
+        //格式function(id,test)：id是单元的唯一标识ID,type是单元的种类,有"node","line"两种取值,"area"不支持被选中
         this.onItemFocus = null;
         //当操作某个单元（结点/线）被由选中变成不选中时，触发的方法，返回FALSE可阻止取消选中事件的发生
-        //格式function(id，type)：id是单元的唯一标识ID,type是单元的种类,有"node","line"两种取值,"area"不支持被取消选中
+        //格式function(id，test)：id是单元的唯一标识ID,type是单元的种类,有"node","line"两种取值,"area"不支持被取消选中
         this.onItemBlur = null;
         //当操作某个单元（结点/分组块）被重定义大小或造型时，触发的方法，返回FALSE可阻止重定大小/造型事件的发生
-        //格式function(id，type,width,height)：id是单元的唯一标识ID,type是单元的种类,有"node","line","area"三种取值;width是新的宽度,height是新的高度
+        //格式function(id，test,width,height)：id是单元的唯一标识ID,type是单元的种类,有"node","line","area"三种取值;width是新的宽度,height是新的高度
         this.onItemResize = null;
         //当移动某条折线中段的位置，触发的方法，返回FALSE可阻止重定大小/造型事件的发生
         //格式function(id，M)：id是单元的唯一标识ID,M是中段的新X(或Y)的坐标
         this.onLineMove = null;
         //当变换某条连接线的类型，触发的方法，返回FALSE可阻止重定大小/造型事件的发生
-        //格式function(id，type)：id是单元的唯一标识ID,type是连接线的新类型,"sl":直线,"lr":中段可左右移动的折线,"tb":中段可上下移动的折线
+        //格式function(id，test)：id是单元的唯一标识ID,type是连接线的新类型,"sl":直线,"lr":中段可左右移动的折线,"tb":中段可上下移动的折线
         this.onLineSetType = null;
         //当变换某条连接线的端点变更连接的结点时，触发的方法，返回FALSE可阻止重定大小/造型事件的发生
         //格式function(id，newStart,newEnd)：id是连线单元的唯一标识ID,newStart,newEnd分别是起始结点的ID和到达结点的ID
         this.onLinePointMove = null;
         //当用重色标注某个结点/转换线时触发的方法，返回FALSE可阻止重定大小/造型事件的发生
-        //格式function(id，type，mark)：id是单元的唯一标识ID,type是单元类型（"node"结点,"line"转换线），mark为布尔值,表示是要标注TRUE还是取消标注FALSE
+        //格式function(id，test，mark)：id是单元的唯一标识ID,type是单元类型（"node"结点,"line"转换线），mark为布尔值,表示是要标注TRUE还是取消标注FALSE
         this.onItemMark = null;
 
         if (property.useOperStack && this.$editable) {//如果要使用堆栈记录操作并提供“撤销/重做”的功能,只在编辑状态下有效
@@ -845,7 +845,7 @@ GooFlow.prototype = {
         }
         if (this.$textArea.css("display") == "none") this.$textArea.removeData("id").val("").hide();
     },
-    //增加一个流程结点,传参为一个JSON,有id,name,top,left,width,height,type(结点类型)等属性
+    //增加一个流程结点,传参为一个JSON,有id,name,top,left,width,height,test(结点类型)等属性
     addNode: function (id, json) {
         if (this.onItemAdd != null && !this.onItemAdd(id, "node", json))return;
         if (this.$undoStack && this.$editable) {

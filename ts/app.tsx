@@ -1,9 +1,9 @@
 import './public/index.html';
 import * as React from "react";
+import 'Lay';
 import * as ReactDOM from "react-dom";
 
 import Hello from "./Hello";
-import HelloCon from './Type/HelloCon';
 
 ReactDOM.render(
     <Hello name="TypeScript" enthusiasmLevel={10}/>,

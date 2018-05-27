@@ -3,7 +3,7 @@
  */
 import './public/index.html';
 import './style/app.scss';
-import './layui/layui/layui/css/layui.css';
+import 'Lay';
 // import "babel-polyfill";
 import React from 'react';
 import ReactDom from 'react-dom';

@@ -85,7 +85,7 @@ class RecordAudio extends React.Component {
                 case 'changeVolume':
                     /**
                      * muted=true开启静音模式,muted=false开启声音
-                     * @type {number}
+                     * @test {number}
                      */
                     audio.volume = e.target.value / 100;
                     this.setState({

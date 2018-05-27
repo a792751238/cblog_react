@@ -1,5 +1,6 @@
 import * as React from 'react';
-import HelloCon from './type/HelloCon'
+import HelloCon from './test/HelloCon';
+import Tag from './components/tag/Tag';
 
 export interface Props {
     name: string;
@@ -20,6 +21,9 @@ export default class Hello extends React.Component<Props, object> {
                     Hello {name + getExclamationMarks(enthusiasmLevel)}
                 </div>
                 <HelloCon compiler="today" framework="good boy"/>
+                <Tag shape="dot" color="orange"/>
+                <Tag color="orange">hello world</Tag>
+                <Tag shape="rim">hello world</Tag>
             </div>
         );
     }

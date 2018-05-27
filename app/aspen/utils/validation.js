@@ -41,7 +41,7 @@ export function validate(value, valueType, formData, props, callback) {
 
     let reg = Regs[type]
 
-    // json type
+    // json test
     if (type === 'json') {
         if (typeof value === 'object') return true
 
@@ -69,7 +69,7 @@ export function validate(value, valueType, formData, props, callback) {
         }
     }
 
-    // validate type
+    // validate test
     if (reg && !reg.test(value)) {
         return handleError(label, value, type, tip)
     }

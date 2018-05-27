@@ -205,7 +205,7 @@ export default function FormItem(Component) {
             // if (popover) {
             //     return (
             //         <Popover position={popover}
-            //                  type={'danger'}
+            //                  test={'danger'}
             //                  content={result instanceof Error ? result.message : undefined}>
             //             {el}
             //         </Popover>
@@ -222,7 +222,7 @@ export default function FormItem(Component) {
 FormItem.register = curry((types, options, component) => {
     let newComponent = FormItem(component)
 
-    // allow empty type
+    // allow empty test
     // if (isEmpty(types)) {
     //  console.warn('types must be string or array');
     //  return;

@@ -11,7 +11,7 @@ import Flow from '../flow/SimpleFlow';
 import Gante from '../gantt/Gantt';
 import Ui from '../ui/Ui';
 import Table from '../table/Table';
-// import HelloCon from '../type/HelloCon.tsx';
+// import HelloCon from '../test/HelloCon.tsx';
 
 class Content extends React.Component {
     render() {
