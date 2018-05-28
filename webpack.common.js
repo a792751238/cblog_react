@@ -14,16 +14,18 @@ module.exports = {
         alias: {
             'jQuery': 'jquery/dist/jquery',
             '$': 'jquery/dist/jquery',
-            Util$: path.resolve(__dirname, './utils/kiana/'),
+            Util$: path.resolve(__dirname, 'easter_utils/index.js'),
+            Lay$: path.resolve(__dirname, 'alias/layui/layui/layui/css/layui.css')
         },
-        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".json"]
     },
     entry: {
-        app: ['babel-polyfill', './app.js'],
+        // app: ['babel-polyfill', './app.js'],
+        app: './index.js'
     },
     output: {
         path: path.resolve(__dirname, 'dist'), //打包的文件夹
-        filename: 'app.js',
+        filename: 'index.js',
     },
     module: {
         rules: [

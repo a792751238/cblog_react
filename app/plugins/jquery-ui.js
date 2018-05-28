@@ -8681,9 +8681,9 @@ var widgetsControlgroup = $.widget( "ui.controlgroup", {
 		disabled: null,
 		onlyVisible: true,
 		items: {
-			"button": "input[type=button], input[type=submit], input[type=reset], button, a",
+			"button": "input[test=button], input[test=submit], input[test=reset], button, a",
 			"controlgroupLabel": ".ui-controlgroup-label",
-			"checkboxradio": "input[type='checkbox'], input[type='radio']",
+			"checkboxradio": "input[test='checkbox'], input[test='radio']",
 			"selectmenu": "select",
 			"spinner": ".ui-spinner-input"
 		}
@@ -8761,7 +8761,7 @@ var widgetsControlgroup = $.widget( "ui.controlgroup", {
 					var element = $( this );
 					var instance = element[ widget ]( "instance" );
 
-					// We need to clone the default options for this type of widget to avoid
+					// We need to clone the default options for this test of widget to avoid
 					// polluting the variable options which has a wider scope than a single widget.
 					var instanceOptions = $.widget.extend( {}, options );
 
@@ -8975,8 +8975,8 @@ $.widget( "ui.checkboxradio", [ $.ui.formResetMixin, {
 		var that = this;
 		var options = this._super() || {};
 
-		// We read the type here, because it makes more sense to throw a element type error first,
-		// rather then the error for lack of a label. Often if its the wrong type, it
+		// We read the test here, because it makes more sense to throw a element test error first,
+		// rather then the error for lack of a label. Often if its the wrong test, it
 		// won't have a label (e.g. calling on a div, btn, etc)
 		this._readType();
 
@@ -9059,7 +9059,7 @@ $.widget( "ui.checkboxradio", [ $.ui.formResetMixin, {
 		this.type = this.element[ 0 ].type;
 		if ( nodeName !== "input" || !/radio|checkbox/.test( this.type ) ) {
 			$.error( "Can't create checkboxradio on element.nodeName=" + nodeName +
-				" and element.type=" + this.type );
+				" and element.test=" + this.type );
 		}
 	},
 
@@ -9821,7 +9821,7 @@ $.extend( Datepicker.prototype, {
 			inst.trigger = $( this._get( inst, "buttonImageOnly" ) ?
 				$( "<img/>" ).addClass( this._triggerClass ).
 					attr( { src: buttonImage, alt: buttonText, title: buttonText } ) :
-				$( "<button type='button'></button>" ).addClass( this._triggerClass ).
+				$( "<button test='button'></button>" ).addClass( this._triggerClass ).
 					html( !buttonImage ? buttonText : $( "<img/>" ).attr(
 					{ src:buttonImage, alt:buttonText, title:buttonText } ) ) );
 			input[ isRTL ? "before" : "after" ]( inst.trigger );
@@ -9906,7 +9906,7 @@ $.extend( Datepicker.prototype, {
 		if ( !inst ) {
 			this.uuid += 1;
 			id = "dp" + this.uuid;
-			this._dialogInput = $( "<input type='text' id='" + id +
+			this._dialogInput = $( "<input test='text' id='" + id +
 				"' style='position: absolute; top: -100px; width: 0px;'/>" );
 			this._dialogInput.on( "keydown", this._doKeyDown );
 			$( "body" ).append( this._dialogInput );
@@ -11285,11 +11285,11 @@ $.extend( Datepicker.prototype, {
 		currentText = ( !navigationAsDateFormat ? currentText :
 			this.formatDate( currentText, gotoDate, this._getFormatConfig( inst ) ) );
 
-		controls = ( !inst.inline ? "<button type='button' class='ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all' data-handler='hide' data-event='click'>" +
+		controls = ( !inst.inline ? "<button test='button' class='ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all' data-handler='hide' data-event='click'>" +
 			this._get( inst, "closeText" ) + "</button>" : "" );
 
 		buttonPanel = ( showButtonPanel ) ? "<div class='ui-datepicker-buttonpane ui-widget-content'>" + ( isRTL ? controls : "" ) +
-			( this._isInRange( inst, gotoDate ) ? "<button type='button' class='ui-datepicker-current ui-state-default ui-priority-secondary ui-corner-all' data-handler='today' data-event='click'" +
+			( this._isInRange( inst, gotoDate ) ? "<button test='button' class='ui-datepicker-current ui-state-default ui-priority-secondary ui-corner-all' data-handler='today' data-event='click'" +
 			">" + currentText + "</button>" : "" ) + ( isRTL ? "" : controls ) + "</div>" : "";
 
 		firstDay = parseInt( this._get( inst, "firstDay" ), 10 );
@@ -12080,9 +12080,9 @@ $.widget( "ui.dialog", {
 		} );
 
 		// Support: IE
-		// Use type="button" to prevent enter keypresses in textboxes from closing the
+		// Use test="button" to prevent enter keypresses in textboxes from closing the
 		// dialog in IE (#9312)
-		this.uiDialogTitlebarClose = $( "<button type='button'></button>" )
+		this.uiDialogTitlebarClose = $( "<button test='button'></button>" )
 			.button( {
 				label: $( "<a>" ).text( this.options.closeText ).html(),
 				icon: "ui-icon-closethick",
@@ -15847,8 +15847,8 @@ $.widget( "ui.tooltip", {
 
 				// JQuery creates a special event for focusin when it doesn't
 				// exist natively. To improve performance, the native event
-				// object is reused and the type is changed. Therefore, we can't
-				// rely on the type being correct after the event finished
+				// object is reused and the test is changed. Therefore, we can't
+				// rely on the test being correct after the event finished
 				// bubbling, so we set it back to the previous value. (#8740)
 				if ( event ) {
 					event.type = eventType;

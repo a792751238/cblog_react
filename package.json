@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "set NODE_ENV=production&&webpack -p --config webpack.pro.js",
-    "start": "webpack-dev-server --devtool eval --progress --colors --config webpack.dev.js "
+    "start": "webpack-dev-server --devtool eval --progress --colors --config webpack.dev.js",
+    "ts_start": "webpack-dev-server --devtool eval --progress --colors --config webpack.ts.dev.js",
+    "ts_build": "set NODE_ENV=production&&webpack -p --config webpack.ts.pro.js"
   },
   "author": "easterCat",
   "license": "ISC",
@@ -44,20 +46,28 @@
     "sass-loader": "^6.0.6",
     "source-map-loader": "^0.2.3",
     "style-loader": "^0.19.0",
-    "ts-loader": "^4.1.0",
     "typescript": "^2.8.1",
     "url-loader": "^0.6.2",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^4.1.0",
+    "react-addons-test-utils": "^15.4.2",
+    "react-scripts-ts": "1.0.6"
   },
   "dependencies": {
+    "@types/enzyme": "^2.7.2",
+    "@types/jest": "^18.1.1",
+    "@types/node": "^7.0.5",
+    "@types/react": "^15.6.6",
+    "@types/react-dom": "^0.14.22",
+    "@types/react-redux": "^4.4.36",
     "antd": "^2.13.6",
     "axios": "^0.16.2",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "blueimp-md5": "^2.10.0",
     "curry": "^1.2.0",
     "easter-utils": "git+ssh://git@github.com/a792751238/easter_utils.git",
+    "enzyme": "^2.7.1",
     "github-markdown-css": "^2.9.0",
     "gojs": "^1.8.2",
     "immutable": "^3.8.2",
@@ -78,6 +88,7 @@
     "redux-immutable": "^4.0.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
+    "ts-loader": "^3.1.1",
     "underscore": "^1.8.3"
   }
 }

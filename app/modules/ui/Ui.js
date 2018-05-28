@@ -3,11 +3,11 @@
  */
 
 import React from 'react';
-import FileUpload from '../../kiana/upload/FileUpload';
-import Button from '../../kiana/button/Button';
-import ButtonGroup from '../../kiana/button/ButtonGroup';
-import ButtonContainer from '../../kiana/button/ButtonContainer';
-import Icon from '../../kiana/icon/Icon';
+import FileUpload from '../../aspen/upload/FileUpload';
+import Button from '../../aspen/button/Button';
+import ButtonGroup from '../../aspen/button/ButtonGroup';
+import ButtonContainer from '../../aspen/button/ButtonContainer';
+import Icon from '../../aspen/icon/Icon';
 
 class Ui extends React.Component {
     constructor(props) {

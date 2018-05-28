@@ -6,7 +6,7 @@ import axios from 'axios';
 import config from '../../app.config';
 
 export function get(url, type) {
-    console.log('netRequest中的jquery',$);
+    console.log('netRequest中的jquery', $);
     return dispatch => {
         return $.ajax({type: 'GET', url: url, xhrFields: {withCredentials: true}})
             .then(
@@ -40,7 +40,7 @@ export function post(url, data, type) {
                 });
             })
             .fail(function (err) {
-                console.log(err);
+                console.error('登录时出现错误', err);
             })
     }
 }

@@ -2,12 +2,13 @@
  * Created by easterCat on 2018/5/10.
  */
 import React from 'react';
-import FileUpload from '../../kiana/upload/FileUpload';
-import Button from '../../kiana/button/Button';
-import ButtonGroup from '../../kiana/button/ButtonGroup';
-import ButtonContainer from '../../kiana/button/ButtonContainer';
-import Icon from '../../kiana/icon/Icon';
-import Table from '../../kiana/table/Table';
+import FileUpload from '../../aspen/upload/FileUpload';
+import Button from '../../aspen/button/Button';
+import ButtonGroup from '../../aspen/button/ButtonGroup';
+import ButtonContainer from '../../aspen/button/ButtonContainer';
+import Icon from '../../aspen/icon/Icon';
+import Table from '../../aspen/table/Table';
+import Tag from '../../aspen/tag/Tag';
 
 class Ui2 extends React.Component {
     constructor(props) {
@@ -48,6 +49,9 @@ class Ui2 extends React.Component {
                 <Table columns={columns}
                        dataSource={datas}
                 />
+                <Tag shape="dot"/>
+                <Tag color="black">hello world</Tag>
+                <Tag shape="rim">hello world</Tag>
             </div>
         )
     }

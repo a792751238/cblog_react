@@ -688,7 +688,7 @@
     //
     // this function generates a guid for every handler, sets it on the handler, then adds
     // it to the associated object's map of handlers for the given event. this is what enables us
-    // to unbind all events of some type, or all events (the second of which can be requested by the user,
+    // to unbind all events of some test, or all events (the second of which can be requested by the user,
     // but it also used by Mottle when an element is removed.)
         _store = function (obj, event, fn) {
             var g = guid++;
@@ -776,7 +776,7 @@
 
             // store in the list of callbacks
             obj.__taSmartClicks.push(fn);
-            // the unstore function removes this function from the object's listener list for this type.
+            // the unstore function removes this function from the object's listener list for this test.
             fn.__taUnstore = function () {
                 _d(obj.__taSmartClicks, fn);
             };
@@ -862,7 +862,7 @@
                     obj.__taTapHandler.downSelectors.push(children);
 
                     obj.__taTapHandler[evt].push([fn, children]);
-                    // the unstore function removes this function from the object's listener list for this type.
+                    // the unstore function removes this function from the object's listener list for this test.
                     fn.__taUnstore = function () {
                         _d(obj.__taTapHandler[evt], fn);
                     };
@@ -3199,7 +3199,7 @@
                 return id;
             };
 
-// ----------------------------- default type --------------------------------------------
+// ----------------------------- default test --------------------------------------------
 
 
             var o = params.overlays || [], oo = {};
@@ -3230,7 +3230,7 @@
                 }
             };
 
-// ----------------------------- end default type --------------------------------------------
+// ----------------------------- end default test --------------------------------------------
 
             // all components can generate events
 
@@ -3733,7 +3733,7 @@
         // Draws an endpoint and its connections. this is the main entry point into drawing connections as well
         // as endpoints, since jsPlumb is endpoint-centric under the hood.
         //
-        // @param element element to draw (of type library specific element object)
+        // @param element element to draw (of test library specific element object)
         // @param ui UI object from current library's event system. optional.
         // @param timestamp timestamp for this paint cycle. used to speed things up a little by cutting down the amount of offset calculations we do.
         // @param clearEdits defaults to false; indicates that mouse edits for connectors should be cleared
@@ -3948,7 +3948,7 @@
                     return;
                 }
 
-                // if source endpoint mandates connection type and nothing specified in our params, use it.
+                // if source endpoint mandates connection test and nothing specified in our params, use it.
                 if (!_p.type && _p.sourceEndpoint) {
                     _p.type = _p.sourceEndpoint.connectionType;
                 }
@@ -5008,11 +5008,11 @@
         this.getEndpoints = function (el) {
             return endpointsByElement[_info(el).id] || [];
         };
-        // gets the default endpoint type. used when subclassing. see wiki.
+        // gets the default endpoint test. used when subclassing. see wiki.
         this.getDefaultEndpointType = function () {
             return jsPlumb.Endpoint;
         };
-        // gets the default connection type. used when subclassing.  see wiki.
+        // gets the default connection test. used when subclassing.  see wiki.
         this.getDefaultConnectionType = function () {
             return jsPlumb.Connection;
         };
@@ -5193,7 +5193,7 @@
                     return new root.jsPlumb.Anchors[t](p);
                 }
                 if (!_currentInstance.Defaults.DoNotThrowErrors) {
-                    throw { msg: "jsPlumb: unknown anchor type '" + t + "'" };
+                    throw { msg: "jsPlumb: unknown anchor test '" + t + "'" };
                 }
             };
             if (arguments.length === 0) {
@@ -5204,7 +5204,7 @@
             if (specimen.compute && specimen.getOrientation) {
                 return specimen;
             }  //TODO hazy here about whether it should be added or is already added somehow.
-            // is it the name of an anchor type?
+            // is it the name of an anchor test?
             else if (typeof specimen === "string") {
                 newAnchor = _a(arguments[0], {elementId: elementId, jsPlumbInstance: _currentInstance});
             }
@@ -6404,7 +6404,7 @@
  *
  * Provides a way to visually connect elements on an HTML page, using SVG.
  *
- * This file contains the base functionality for DOM type adapters.
+ * This file contains the base functionality for DOM test adapters.
  *
  * Copyright (c) 2010 - 2017 jsPlumb (hello@jsplumbtoolkit.com)
  *
@@ -7068,7 +7068,7 @@
 
     _jp.OverlayCapableJsPlumbUIComponent.applyType = function (component, t) {
         if (t.overlays) {
-            // loop through the ones in the type. if already present on the components,
+            // loop through the ones in the test. if already present on the components,
             // dont remove or re-add.
             var keep = {}, i;
 
@@ -7484,7 +7484,7 @@
                     return new _jp.Endpoints[rm][t](p);
                 }
                 if (!_jsPlumb.Defaults.DoNotThrowErrors) {
-                    throw { msg: "jsPlumb: unknown endpoint type '" + t + "'" };
+                    throw { msg: "jsPlumb: unknown endpoint test '" + t + "'" };
                 }
             };
 
@@ -8098,7 +8098,7 @@
         var anchorParamsToUse = params.anchor ? params.anchor : params.anchors ? params.anchors : (_jsPlumb.Defaults.Anchor || "Top");
         this.setAnchor(anchorParamsToUse, true);
 
-        // finally, set type if it was provided
+        // finally, set test if it was provided
         var type = [ "default", (params.type || "")].join(" ");
         this.addType(type, params.data, true);
         this.canvas = this.endpoint.canvas;
@@ -8577,7 +8577,7 @@
 
     var makeConnector = function (_jsPlumb, renderMode, connectorName, connectorArgs, forComponent) {
             if (!_jsPlumb.Defaults.DoNotThrowErrors && _jp.Connectors[renderMode][connectorName] == null) {
-                throw { msg: "jsPlumb: unknown connector type '" + connectorName + "'" };
+                throw { msg: "jsPlumb: unknown connector test '" + connectorName + "'" };
             }
 
             return new _jp.Connectors[renderMode][connectorName](connectorArgs, forComponent);
@@ -8674,8 +8674,8 @@
             return this.prepareEndpoint(_jsPlumb, _newEndpoint, this, ep, isSource ? 0 : 1, params, el, elId);
         };
 
-        // if type given, get the endpoint definitions mapping to that type from the jsplumb instance, and use those.
-        // we apply types at the end of this constructor but endpoints are only honoured in a type definition at
+        // if test given, get the endpoint definitions mapping to that test from the jsplumb instance, and use those.
+        // we apply types at the end of this constructor but endpoints are only honoured in a test definition at
         // create time.
         if (params.type) {
             params.endpoints = params.endpoints || this._jsPlumb.instance.deriveEndpointAndAnchorSpec(params.type).endpoints;
@@ -8985,7 +8985,7 @@
         setPreparedConnector: function(connector, doNotRepaint, doNotChangeListenerComponent, typeId) {
 
             var previous, previousClasses = "";
-            // the connector will not be cleaned up if it was set as part of a type, because `typeId` will be set on it
+            // the connector will not be cleaned up if it was set as part of a test, because `typeId` will be set on it
             // and we havent passed in `true` for "force" here.
             if (this.connector != null) {
                 previous = this.connector;
@@ -10254,7 +10254,7 @@
 
 // ------- position assign anchors -------------------    
 
-    // this anchor type lets you assign the position at connection time.
+    // this anchor test lets you assign the position at connection time.
     _curryAnchor(0, 0, 0, 0, "Assign", function (anchor, params) {
         // find what to use as the "position finder". the user may have supplied a String which represents
         // the id of a position finder in jsPlumb.AnchorPositionFinders, or the user may have supplied the
@@ -10289,7 +10289,7 @@
             shape = params.shape;
 
         if (!shape) {
-            throw new Error("no shape supplied to Perimeter Anchor type");
+            throw new Error("no shape supplied to Perimeter Anchor test");
         }
 
         var _circle = function () {
@@ -10389,7 +10389,7 @@
             };
 
         if (!_shapes[shape]) {
-            throw new Error("Shape [" + shape + "] is unknown by Perimeter Anchor type");
+            throw new Error("Shape [" + shape + "] is unknown by Perimeter Anchor test");
         }
 
         var da = _shapes[shape](params);
@@ -10774,7 +10774,7 @@
             var _super = _jp.Segments.AbstractSegment.apply(this, arguments);
             // although this is not a strictly rigorous determination of bounds
             // of a bezier curve, it works for the types of curves that this segment
-            // type produces.
+            // test produces.
             this.bounds = {
                 minX: Math.min(params.x1, params.x2, params.cp1x, params.cp2x),
                 minY: Math.min(params.y1, params.y2, params.cp1y, params.cp2y),
@@ -10909,7 +10909,7 @@
         this.isEditing = function() { return this.editor != null && this.editor.isActive(); };
         this.setEditable = function(e) {
             // if this connector has an editor already, or
-            // if an editor for this connector's type is available, or
+            // if an editor for this connector's test is available, or
             // if the child declares an overrideSetEditable and it does not return false, editable is true.
             if (e && _jp.ConnectorEditors != null && _jp.ConnectorEditors[this.type] != null && (this.overrideSetEditable == null || this.overrideSetEditable())) {
                 editable = e;
@@ -10965,7 +10965,7 @@
             /**
              * returns [segment, proportion of travel in segment, segment index] for the segment
              * that contains the point which is 'location' distance along the entire path, where
-             * 'location' is a decimal between 0 and 1 inclusive. in this connector type, paths
+             * 'location' is a decimal between 0 and 1 inclusive. in this connector test, paths
              * are made up of a list of segments, each of which contributes some fraction to
              * the total length.
              * From 1.3.10 this also supports the 'absolute' property, which lets us specify a location
@@ -13245,7 +13245,7 @@
  *
  * Provides a way to visually connect elements on an HTML page, using SVG.
  *
- * This file contains the code for the Bezier connector type.
+ * This file contains the code for the Bezier connector test.
  *
  * Copyright (c) 2010 - 2017 jsPlumb (hello@jsplumbtoolkit.com)
  *
@@ -13720,7 +13720,7 @@
             _clearGradient(parent);
             // this checks for an 'offset' property in the gradient, and in the absence of it, assumes
             // we want a linear gradient. if it's there, we create a radial gradient.
-            // it is possible that a more explicit means of defining the gradient type would be
+            // it is possible that a more explicit means of defining the gradient test would be
             // better. relying on 'offset' means that we can never have a radial gradient that uses
             // some default offset, for instance.
             // issue 244 suggested the 'gradientUnits' attribute; without this, straight/flowchart connectors with gradients would
@@ -13789,7 +13789,7 @@
                 node.setAttribute(STROKE_DASHARRAY, style[STROKE_DASHARRAY]);
             }
 
-            // extra attributes such as join type, dash offset.
+            // extra attributes such as join test, dash offset.
             for (var i in svgAttributeMap) {
                 if (style[i]) {
                     node.setAttribute(svgAttributeMap[i], style[i]);
