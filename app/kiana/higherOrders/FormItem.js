@@ -188,7 +188,7 @@ export default function FormItem(Component) {
             // remove defaultValue,  use controlled value
             delete props['defaultValue']
 
-            let el = (
+            let backElement = (
                 <Component {...props}
                            ref={this.bindElement}
                            name={name}
@@ -201,7 +201,7 @@ export default function FormItem(Component) {
             )
 
 
-            return el
+            return backElement
             // if (popover) {
             //     return (
             //         <Popover position={popover}
