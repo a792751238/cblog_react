@@ -964,7 +964,7 @@
                 return $('<div class="bottom"></div>').append(ganttNavigate);
             },
 
-            // **Progress Bar**
+            // **progress Bar**
             // Return an element representing a progress of position within the entire chart
             createProgressBar: function (label, desc, classNames, dataObj) {
                 label = label || "";

@@ -7,7 +7,7 @@ import {matchPath} from 'react-router-dom';
 import Header from '../layout/Header';
 import Content from '../layout/Content';
 import Sidebar from '../layout/Sidebar';
-import {Layout} from 'antd';
+import Layout from '../../aspen/layout/Layout';
 
 class Home extends React.Component {
     constructor(props) {
@@ -39,29 +39,23 @@ class Home extends React.Component {
 
     render() {
         return (
-            <Layout className="layout-app">
-                <Layout.Sider
-                    trigger={null}
-                    collapsible
-                    collapsed={this.state.collapsed}
-                >
+            <div>
+                <Layout.Sider>
                     <Sidebar res={this.res}/>
                 </Layout.Sider>
-                <Layout>
-                    <Layout.Header style={{background: '#fff', padding: 0}}>
-                        <Header collapsed={this.state.collapsed}
-                                toggle={this.toggle}
-                        />
-                    </Layout.Header>
-                    <Layout.Content className="r-b-content" style={{
-                        margin: '24px 16px',
-                        padding: 24,
-                        background: '#fff',
-                    }}>
-                        <Content/>
-                    </Layout.Content>
-                </Layout>
-            </Layout>
+                <Layout.Header style={{background: '#fff', padding: 0}}>
+                    <Header collapsed={this.state.collapsed}
+                            toggle={this.toggle}
+                    />
+                </Layout.Header>
+                <Layout.Content className="r-b-content" style={{
+                    margin: '24px 16px',
+                    padding: 24,
+                    background: '#fff',
+                }}>
+                    <Content/>
+                </Layout.Content>
+            </div>
         )
     }
 }

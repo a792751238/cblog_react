@@ -2,13 +2,12 @@
  * Created by easterCat on 2018/5/10.
  */
 import React from 'react';
-import FileUpload from '../../aspen/upload/FileUpload';
 import Button from '../../aspen/button/Button';
-import ButtonGroup from '../../aspen/button/ButtonGroup';
-import ButtonContainer from '../../aspen/button/ButtonContainer';
-import Icon from '../../aspen/icon/Icon';
 import Table from '../../aspen/table/Table';
 import Tag from '../../aspen/tag/Tag';
+import Nav from '../../aspen/nav/Nav';
+import Process from '../../aspen/progress/Porgress';
+import Grid from '../../aspen/grid/Grid';
 
 class Ui2 extends React.Component {
     constructor(props) {
@@ -52,6 +51,70 @@ class Ui2 extends React.Component {
                 <Tag shape="dot"/>
                 <Tag color="black">hello world</Tag>
                 <Tag shape="rim">hello world</Tag>
+                <Nav active="tab01" theme="brief">
+                    <Nav.Item id="tab01">foo</Nav.Item>
+                    <Nav.Item id="tab02">bar</Nav.Item>
+                    <Nav.Item id="tab03">baz</Nav.Item>
+                </Nav>
+                <Process/>
+                <Grid.Row space={5}>
+                    <Grid.Col xs={12} md={6}>
+                        <div style={{height: '100px', background: '#009688'}}>
+                            hell world
+                        </div>
+                    </Grid.Col>
+                    <Grid.Col xs={12} md={6}>
+                        <div style={{height: '100px', background: '#009688'}}>
+                            hell world
+                        </div>
+                    </Grid.Col>
+                </Grid.Row>
+                <Grid.Row space={5}>
+                    <Grid.Col xs={12} md={6}>
+                        <div style={{height: '100px', background: '#009688'}}>
+                            hell world
+                        </div>
+                    </Grid.Col>
+                    <Grid.Col xs={12} md={6}>
+                        <div style={{height: '100px', background: '#009688'}}>
+                            hell world
+                        </div>
+                    </Grid.Col>
+
+                </Grid.Row>
+                <Grid.Row space={5}>
+                    <Grid.Col xs={12} md={6}>
+                        <div style={{height: '100px', background: '#009688'}}>
+                            hell world
+                        </div>
+                    </Grid.Col>
+                    <Grid.Col xs={12} md={6}>
+                        <div style={{height: '100px', background: '#009688'}}>
+                            hell world
+                        </div>
+                    </Grid.Col>
+                </Grid.Row>
+                <Grid.Row space={5}>
+                    <Grid.Col xs={12} md={5}>
+                        <div style={{height: '100px', background: '#009688'}}>
+                            hell world
+                        </div>
+                    </Grid.Col>
+                    <Grid.Col xs={12} md={7}>
+                        <Grid.Row>
+                            <Grid.Col xs={12} md={3}>
+                                <div style={{height: '100px', background: '#1E9FFF'}}>
+                                    hell world
+                                </div>
+                            </Grid.Col>
+                            <Grid.Col xs={12} md={9}>
+                                <div style={{height: '100px', background: '#FFB800'}}>
+                                    hell world
+                                </div>
+                            </Grid.Col>
+                        </Grid.Row>
+                    </Grid.Col>
+                </Grid.Row>
             </div>
         )
     }
