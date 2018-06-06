@@ -82,5 +82,6 @@ module.exports = merge(common, {
             },
         }),
         new CleanWebpackPlugin(['dist', 'dist.zip', 'dist.rar']),
+        new webpack.NoErrorsPlugin()
     ],
 });

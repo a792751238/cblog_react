@@ -3,11 +3,10 @@ import * as classNames from 'classnames';
 
 export interface props {
     children?: any,
-    onClick?: any,
-    onChoose?: any;
-    active?: boolean,
+    onClick?: (activeId: string) => void,
+    active?: string,
     disabled?: boolean,
-    id?: string,
+    id: string,
 }
 
 class NavItem extends React.Component<props, object> {
@@ -17,15 +16,15 @@ class NavItem extends React.Component<props, object> {
     }
 
     handleClick() {
-        this.props.onClick && this.props.onClick();
-        this.props.onChoose && this.props.onChoose();
+        let {id} = this.props;
+        this.props.onClick && this.props.onClick(id);
     }
 
     render() {
-        let {children, active, disabled, ...other} = this.props;
+        let {children, active, id, disabled, ...other} = this.props;
 
         let className = classNames({
-            'layui-this': active,
+            'layui-this': active === id,
             'layui-btn-disabled': disabled,
         });
 

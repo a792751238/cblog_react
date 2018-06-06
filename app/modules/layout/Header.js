@@ -18,9 +18,9 @@ class Header extends React.Component {
 
     componentDidMount() {
         const {history, user} = this.props;
-        if (!user) {
-            history.replace('/login');
-        }
+        // if (!user) {
+        //     history.replace('/login');
+        // }
     }
 
     render() {

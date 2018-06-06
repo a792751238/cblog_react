@@ -1,6 +1,6 @@
 import './public/index.html';
 import * as React from "react";
-import 'Lay';
+import 'LayCss';
 import * as ReactDOM from "react-dom";
 
 import Hello from "./Hello";

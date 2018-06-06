@@ -29,22 +29,25 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var classNames = require("classnames");
-var Tag = /** @class */ (function (_super) {
-    __extends(Tag, _super);
-    function Tag() {
-        return _super !== null && _super.apply(this, arguments) || this;
+var NavItem = /** @class */ (function (_super) {
+    __extends(NavItem, _super);
+    function NavItem(props) {
+        var _this = _super.call(this, props) || this;
+        _this.handleClick = _this.handleClick.bind(_this);
+        return _this;
     }
-    Tag.prototype.render = function () {
-        var _a;
-        var _b = this.props, children = _b.children, shape = _b.shape, color = _b.color, other = __rest(_b, ["children", "shape", "color"]);
-        var prefix = 'layui';
-        var className = classNames((_a = {},
-            _a[prefix + "-badge"] = !shape,
-            _a[prefix + "-badge-" + shape] = !!shape,
-            _a[prefix + "-bg-" + color] = color,
-            _a));
-        return (React.createElement("span", __assign({ className: className }, other), children));
+    NavItem.prototype.handleClick = function () {
+        var id = this.props.id;
+        this.props.onClick && this.props.onClick(id);
     };
-    return Tag;
+    NavItem.prototype.render = function () {
+        var _a = this.props, children = _a.children, active = _a.active, id = _a.id, disabled = _a.disabled, other = __rest(_a, ["children", "active", "id", "disabled"]);
+        var className = classNames({
+            'layui-this': active === id,
+            'layui-btn-disabled': disabled,
+        });
+        return (React.createElement("li", __assign({ className: className }, other, { onClick: this.handleClick }), children));
+    };
+    return NavItem;
 }(React.Component));
-exports.default = Tag;
+exports.default = NavItem;

@@ -13,11 +13,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var HelloCon_1 = require("./test/HelloCon");
 var Tag_1 = require("./components/tag/Tag");
+var Nav_1 = require("./components/nav/Nav");
 var Hello = /** @class */ (function (_super) {
     __extends(Hello, _super);
-    function Hello() {
-        return _super !== null && _super.apply(this, arguments) || this;
+    function Hello(props) {
+        var _this = _super.call(this, props) || this;
+        _this.onSelect = _this.onSelect.bind(_this);
+        return _this;
     }
+    Hello.prototype.onSelect = function (id) {
+    };
+    ;
     Hello.prototype.render = function () {
         var _a = this.props, name = _a.name, _b = _a.enthusiasmLevel, enthusiasmLevel = _b === void 0 ? 1 : _b;
         if (enthusiasmLevel <= 0) {
@@ -30,7 +36,11 @@ var Hello = /** @class */ (function (_super) {
             React.createElement(HelloCon_1.default, { compiler: "today", framework: "good boy" }),
             React.createElement(Tag_1.default, { shape: "dot", color: "orange" }),
             React.createElement(Tag_1.default, { color: "orange" }, "hello world"),
-            React.createElement(Tag_1.default, { shape: "rim" }, "hello world")));
+            React.createElement(Tag_1.default, { shape: "rim" }, "hello world"),
+            React.createElement(Nav_1.default, { active: "tab01", theme: "brief", onSelect: this.onSelect },
+                React.createElement(Nav_1.default.Item, { id: "tab01" }, "foo"),
+                React.createElement(Nav_1.default.Item, { id: "tab02" }, "bar"),
+                React.createElement(Nav_1.default.Item, { id: "tab03" }, "baz"))));
     };
     return Hello;
 }(React.Component));

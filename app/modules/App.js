@@ -3,35 +3,31 @@
  */
 import React from 'react';
 import {connect} from 'react-redux';
+import {Route} from 'react-router-dom'
 import Home from './Home/Home';
 import Register from './user/Register';
 import Login from './user/Login';
 import ChangeUser from './user/ChangeUser';
-import {Route} from 'react-router-dom'
 
 class App extends React.Component {
-    constructor() {
-        super();
-    }
-
-    componentDidMount() {
+    componentWillMount() {
         const {
             location,
             history,
             user
         } = this.props;
-        let arr = [1, 2, 3, 4];
-        console.log('展开运算符',...arr);
 
-        if (user) {
-            if (location.pathname === '/home' || location.pathname === '/') {
-                history.replace('/home')
-            }
-        } else {
-            if (location.pathname !== '/register') {
-                history.replace('/login')
-            }
-        }
+        history.replace('/home')
+
+        // if (user) {
+        //     if (location.pathname === '/home' || location.pathname === '/') {
+        //         history.replace('/home')
+        //     }
+        // } else {
+        //     if (location.pathname !== '/register') {
+        //         history.replace('/login')
+        //     }
+        // }
 
     }
 
@@ -40,9 +36,9 @@ class App extends React.Component {
         return (
             <div className="app">
                 <Route path="/home" component={Home}/>
-                <Route path="/login" component={Login}/>
-                <Route path="/register" component={Register}/>
-                <Route path="/changeUser" component={ChangeUser}/>
+                {/*<Route path="/login" component={Login}/>*/}
+                {/*<Route path="/register" component={Register}/>*/}
+                {/*<Route path="/changeUser" component={ChangeUser}/>*/}
             </div>
         )
     }

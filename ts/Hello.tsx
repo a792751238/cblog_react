@@ -12,15 +12,9 @@ export default class Hello extends React.Component<Props, any> {
     constructor(props) {
         super(props);
         this.onSelect = this.onSelect.bind(this);
-        this.onClick = this.onClick.bind(this);
     }
 
-    onSelect() {
-        console.log(1);
-    };
-
-    onClick() {
-        alert(2);
+    onSelect(id) {
     };
 
     render() {
@@ -40,10 +34,10 @@ export default class Hello extends React.Component<Props, any> {
                 <Tag color="orange">hello world</Tag>
                 <Tag shape="rim">hello world</Tag>
 
-                <Nav active="foo" onSelect={this.onSelect}>
-                    <Nav.Item id="foo" onClick={this.onClick}>foo</Nav.Item>
-                    <Nav.Item id="bar">bar</Nav.Item>
-                    <Nav.Item id="baz">baz</Nav.Item>
+                <Nav active="tab01" theme="brief" onSelect={this.onSelect}>
+                    <Nav.Item id="tab01">foo</Nav.Item>
+                    <Nav.Item id="tab02">bar</Nav.Item>
+                    <Nav.Item id="tab03">baz</Nav.Item>
                 </Nav>
             </div>
         );
