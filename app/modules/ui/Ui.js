@@ -4,9 +4,9 @@
 
 import React from 'react';
 import FileUpload from '../../aspen/upload/FileUpload';
-import Button from '../../aspen/button/Button';
-import ButtonGroup from '../../aspen/button/ButtonGroup';
-import ButtonContainer from '../../aspen/button/ButtonContainer';
+import Button from '../../aspen/components/button/Button';
+import ButtonGroup from '../../aspen/components/button/ButtonGroup';
+import ButtonContainer from '../../aspen/components/button/ButtonContainer';
 import Icon from '../../aspen/icon/Icon';
 
 class Ui extends React.Component {

@@ -795,9 +795,9 @@
                 // `settings.navigate='scroll'`
                 if (settings.navigate === "scroll") {
                     ganttNavigate = $('<div class="navigate" />')
-                        .append($('<div class="nav-slider" />')
-                            .append($('<div class="nav-slider-left" />')
-                                .append($('<button test="button" class="nav-link nav-page-back"/>')
+                        .append($('<div class="tab-slider" />')
+                            .append($('<div class="tab-slider-left" />')
+                                .append($('<button test="button" class="tab-link tab-page-back"/>')
                                     .html('&uarr;')
                                     .click(function () {
                                         core.navigatePage(element, -1);
@@ -805,17 +805,17 @@
                                 .append($('<div class="page-number"/>')
                                         .append($('<span/>')
                                             .html(element.pageNum + 1 + ' / ' + element.pageCount)))
-                                .append($('<button test="button" class="nav-link nav-page-next"/>')
+                                .append($('<button test="button" class="tab-link tab-page-next"/>')
                                     .html('&darr;')
                                     .click(function () {
                                         core.navigatePage(element, 1);
                                     }))
-                                .append($('<button test="button" class="nav-link nav-now"/>')
+                                .append($('<button test="button" class="tab-link tab-now"/>')
                                     .html('&#9679;')
                                     .click(function () {
                                         core.navigateTo(element, 'now');
                                     }))
-                                .append($('<button test="button" class="nav-link nav-prev-week"/>')
+                                .append($('<button test="button" class="tab-link tab-prev-week"/>')
                                     .html('&lt;&lt;')
                                     .click(function () {
                                         if (settings.scale === 'hours') {
@@ -828,7 +828,7 @@
                                             core.navigateTo(element, tools.getCellSize() * 6);
                                         }
                                     }))
-                                .append($('<button test="button" class="nav-link nav-prev-day"/>')
+                                .append($('<button test="button" class="tab-link tab-prev-day"/>')
                                     .html('&lt;')
                                     .click(function () {
                                         if (settings.scale === 'hours') {
@@ -841,9 +841,9 @@
                                             core.navigateTo(element, tools.getCellSize() * 3);
                                         }
                                     })))
-                            .append($('<div class="nav-slider-content" />')
-                                    .append($('<div class="nav-slider-bar" />')
-                                            .append($('<a class="nav-slider-button" />')
+                            .append($('<div class="tab-slider-content" />')
+                                    .append($('<div class="tab-slider-bar" />')
+                                            .append($('<a class="tab-slider-button" />')
                                                 )
                                                 .mousedown(function (e) {
                                                     e.preventDefault();
@@ -857,8 +857,8 @@
                                                 })
                                             )
                                         )
-                            .append($('<div class="nav-slider-right" />')
-                                .append($('<button test="button" class="nav-link nav-next-day"/>')
+                            .append($('<div class="tab-slider-right" />')
+                                .append($('<button test="button" class="tab-link tab-next-day"/>')
                                     .html('&gt;')
                                     .click(function () {
                                         if (settings.scale === 'hours') {
@@ -871,7 +871,7 @@
                                             core.navigateTo(element, tools.getCellSize() * -3);
                                         }
                                     }))
-                            .append($('<button test="button" class="nav-link nav-next-week"/>')
+                            .append($('<button test="button" class="tab-link tab-next-week"/>')
                                     .html('&gt;&gt;')
                                     .click(function () {
                                         if (settings.scale === 'hours') {
@@ -884,12 +884,12 @@
                                             core.navigateTo(element, tools.getCellSize() * -6);
                                         }
                                     }))
-                                .append($('<button test="button" class="nav-link nav-zoomIn"/>')
+                                .append($('<button test="button" class="tab-link tab-zoomIn"/>')
                                     .html('&#43;')
                                     .click(function () {
                                         core.zoomInOut(element, -1);
                                     }))
-                                .append($('<button test="button" class="nav-link nav-zoomOut"/>')
+                                .append($('<button test="button" class="tab-link tab-zoomOut"/>')
                                     .html('&#45;')
                                     .click(function () {
                                         core.zoomInOut(element, 1);
@@ -902,7 +902,7 @@
                 // button navigation is provided by setting `settings.navigation='buttons'`
                 } else {
                     ganttNavigate = $('<div class="navigate" />')
-                        .append($('<button test="button" class="nav-link nav-page-back"/>')
+                        .append($('<button test="button" class="tab-link tab-page-back"/>')
                             .html('&uarr;')
                             .click(function () {
                                 core.navigatePage(element, -1);
@@ -910,52 +910,52 @@
                         .append($('<div class="page-number"/>')
                                 .append($('<span/>')
                                     .html(element.pageNum + 1 + ' / ' + element.pageCount)))
-                        .append($('<button test="button" class="nav-link nav-page-next"/>')
+                        .append($('<button test="button" class="tab-link tab-page-next"/>')
                             .html('&darr;')
                             .click(function () {
                                 core.navigatePage(element, 1);
                             }))
-                        .append($('<button test="button" class="nav-link nav-begin"/>')
+                        .append($('<button test="button" class="tab-link tab-begin"/>')
                             .html('&#124;&lt;')
                             .click(function () {
                                 core.navigateTo(element, 'begin');
                             }))
-                        .append($('<button test="button" class="nav-link nav-prev-week"/>')
+                        .append($('<button test="button" class="tab-link tab-prev-week"/>')
                             .html('&lt;&lt;')
                             .click(function () {
                                 core.navigateTo(element, tools.getCellSize() * 7);
                             }))
-                        .append($('<button test="button" class="nav-link nav-prev-day"/>')
+                        .append($('<button test="button" class="tab-link tab-prev-day"/>')
                             .html('&lt;')
                             .click(function () {
                                 core.navigateTo(element, tools.getCellSize());
                             }))
-                        .append($('<button test="button" class="nav-link nav-now"/>')
+                        .append($('<button test="button" class="tab-link tab-now"/>')
                             .html('&#9679;')
                             .click(function () {
                                 core.navigateTo(element, 'now');
                             }))
-                        .append($('<button test="button" class="nav-link nav-next-day"/>')
+                        .append($('<button test="button" class="tab-link tab-next-day"/>')
                             .html('&gt;')
                             .click(function () {
                                 core.navigateTo(element, tools.getCellSize() * -1);
                             }))
-                        .append($('<button test="button" class="nav-link nav-next-week"/>')
+                        .append($('<button test="button" class="tab-link tab-next-week"/>')
                             .html('&gt;&gt;')
                             .click(function () {
                                 core.navigateTo(element, tools.getCellSize() * -7);
                             }))
-                        .append($('<button test="button" class="nav-link nav-end"/>')
+                        .append($('<button test="button" class="tab-link tab-end"/>')
                             .html('&gt;&#124;')
                             .click(function () {
                                 core.navigateTo(element, 'end');
                             }))
-                        .append($('<button test="button" class="nav-link nav-zoomIn"/>')
+                        .append($('<button test="button" class="tab-link tab-zoomIn"/>')
                             .html('&#43;')
                             .click(function () {
                                 core.zoomInOut(element, -1);
                             }))
-                        .append($('<button test="button" class="nav-link nav-zoomOut"/>')
+                        .append($('<button test="button" class="tab-link tab-zoomOut"/>')
                             .html('&#45;')
                             .click(function () {
                                 core.zoomInOut(element, 1);
@@ -1328,8 +1328,8 @@
 
             // Move chart via slider control
             sliderScroll: function (element, e) {
-                var $sliderBar = $(element).find(".nav-slider-bar");
-                var $sliderBarBtn = $sliderBar.find(".nav-slider-button");
+                var $sliderBar = $(element).find(".tab-slider-bar");
+                var $sliderBarBtn = $sliderBar.find(".tab-slider-button");
                 var $rightPanel = $(element).find(".fn-gantt .rightPanel");
                 var $dataPanel = $rightPanel.find(".dataPanel");
 
@@ -1386,8 +1386,8 @@
                 if (settings.navigate !== "scroll") { return; }
                 var $rightPanel = $(element).find(".fn-gantt .rightPanel");
                 var $dataPanel = $rightPanel.find(".dataPanel");
-                var $sliderBar = $(element).find(".nav-slider-bar");
-                var $sliderBtn = $sliderBar.find(".nav-slider-button");
+                var $sliderBar = $(element).find(".tab-slider-bar");
+                var $sliderBtn = $sliderBar.find(".tab-slider-button");
 
                 var bWidth = $sliderBar.width();
                 var wButton = $sliderBtn.width();

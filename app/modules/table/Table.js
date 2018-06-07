@@ -2,12 +2,13 @@
  * Created by easterCat on 2018/5/10.
  */
 import React from 'react';
-import Button from '../../aspen/button/Button';
-import Table from '../../aspen/table/Table';
-import Tag from '../../aspen/tag/Tag';
-import Nav from '../../aspen/nav/Nav';
-import Process from '../../aspen/progress/Porgress';
-import Grid from '../../aspen/grid/Grid';
+import Button from '../../aspen/components/button/Button';
+import Table from '../../aspen/components/table/Table';
+import Tag from '../../aspen/components/tag/Tag';
+import Nav from '../../aspen/components/tab/Nav';
+import CirclePorgress from '../../aspen/components/progress/CirclePorgress';
+import Porgress from '../../aspen/components/progress/Porgress';
+import Grid from '../../aspen/components/grid/Grid';
 
 class Ui2 extends React.Component {
     constructor(props) {
@@ -56,7 +57,8 @@ class Ui2 extends React.Component {
                     <Nav.Item id="tab02">bar</Nav.Item>
                     <Nav.Item id="tab03">baz</Nav.Item>
                 </Nav>
-                <Process/>
+                <CirclePorgress/>
+                <Porgress color="cyan" percent={40} size="big" showText={true}/>
                 <Grid.Row space={5}>
                     <Grid.Col xs={12} md={6}>
                         <div style={{height: '100px', background: '#009688'}}>
@@ -80,7 +82,6 @@ class Ui2 extends React.Component {
                             hell world
                         </div>
                     </Grid.Col>
-
                 </Grid.Row>
                 <Grid.Row space={5}>
                     <Grid.Col xs={12} md={6}>

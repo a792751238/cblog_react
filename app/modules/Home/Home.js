@@ -7,7 +7,7 @@ import {matchPath} from 'react-router-dom';
 import Header from '../layout/Header';
 import Content from '../layout/Content';
 import Sidebar from '../layout/Sidebar';
-import Layout from '../../aspen/layout/Layout';
+import Layout from '../../aspen/components/layout/Layout';
 
 class Home extends React.Component {
     constructor(props) {
@@ -33,7 +33,7 @@ class Home extends React.Component {
 
     componentWillMount() {
         if (!this.res || !this.res.length || this.ress.indexOf(this.res) === -1) {
-            this.props.history.replace(`/home/table`)
+            this.props.history.replace(`/home/form`)
         }
     }
 

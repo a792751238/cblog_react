@@ -11,6 +11,7 @@ import Flow from '../flow/SimpleFlow';
 import Gante from '../gantt/Gantt';
 import Ui from '../ui/Ui';
 import Table from '../table/Table';
+import Form from '../form/Form';
 // import HelloCon from '../test/HelloCon.tsx';
 
 class Content extends React.Component {
@@ -25,6 +26,7 @@ class Content extends React.Component {
                 <Route path="/home/gante" component={Gante}/>
                 <Route path="/home/ui" component={Ui}/>
                 <Route path="/home/table" component={Table}/>
+                <Route path="/home/form" component={Form}/>
             </div>
         )
     }
