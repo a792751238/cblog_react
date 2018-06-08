@@ -29,18 +29,18 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var classNames = require("classnames");
-var NavItem = /** @class */ (function (_super) {
-    __extends(NavItem, _super);
-    function NavItem(props) {
+var TabItem = /** @class */ (function (_super) {
+    __extends(TabItem, _super);
+    function TabItem(props) {
         var _this = _super.call(this, props) || this;
         _this.handleClick = _this.handleClick.bind(_this);
         return _this;
     }
-    NavItem.prototype.handleClick = function () {
+    TabItem.prototype.handleClick = function () {
         var id = this.props.id;
         this.props.onClick && this.props.onClick(id);
     };
-    NavItem.prototype.render = function () {
+    TabItem.prototype.render = function () {
         var _a = this.props, children = _a.children, active = _a.active, id = _a.id, disabled = _a.disabled, other = __rest(_a, ["children", "active", "id", "disabled"]);
         var className = classNames({
             'layui-this': active === id,
@@ -48,6 +48,6 @@ var NavItem = /** @class */ (function (_super) {
         });
         return (React.createElement("li", __assign({ className: className }, other, { onClick: this.handleClick }), children));
     };
-    return NavItem;
+    return TabItem;
 }(React.Component));
-exports.default = NavItem;
+exports.default = TabItem;

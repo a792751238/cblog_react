@@ -3553,7 +3553,7 @@ body .layui-table-tips .layui-layer-content {
     font-style: normal
 }
 
-.layui-breadcrumb span[lay-separator] {
+.layui-breadcrumb span[data-lay-separator] {
     margin: 0 10px;
     color: #999
 }

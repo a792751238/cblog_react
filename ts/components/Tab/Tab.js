@@ -12,10 +12,11 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var classNames = require("classnames");
-var NavItem_1 = require("./NavItem");
-var Nav = /** @class */ (function (_super) {
-    __extends(Nav, _super);
-    function Nav(props) {
+var TabItem_1 = require("./TabItem");
+var TabContents_1 = require("./TabContents");
+var Tab = /** @class */ (function (_super) {
+    __extends(Tab, _super);
+    function Tab(props) {
         var _this = _super.call(this, props) || this;
         _this.state = {
             activeId: props.active || ''
@@ -23,12 +24,12 @@ var Nav = /** @class */ (function (_super) {
         _this.renderItems = _this.renderItems.bind(_this);
         return _this;
     }
-    Nav.prototype.componentWillReceiveProps = function (nextProps) {
+    Tab.prototype.componentWillReceiveProps = function (nextProps) {
         if (nextProps.active !== this.props.active) {
             this.setState({ activeId: nextProps.active });
         }
     };
-    Nav.prototype.handleChoose = function (id) {
+    Tab.prototype.handleChoose = function (id) {
         var _this = this;
         var onSelect = this.props.onSelect;
         this.setState({
@@ -37,11 +38,13 @@ var Nav = /** @class */ (function (_super) {
             onSelect && onSelect.call(_this, id);
         });
     };
-    Nav.prototype.renderItems = function () {
+    Tab.prototype.renderItems = function () {
         var _this = this;
         var activeId = this.state.activeId;
         var children = this.props.children;
-        var items = React.Children.map(children, function (child, index) {
+        var length = children.length / 2;
+        var arr = children.slice(0, length);
+        var items = React.Children.map(arr, function (child, index) {
             if (!child)
                 return;
             var id = child.props.id || index.toString();
@@ -54,7 +57,24 @@ var Nav = /** @class */ (function (_super) {
         });
         return items;
     };
-    Nav.prototype.render = function () {
+    Tab.prototype.renderContents = function () {
+        var activeId = this.state.activeId;
+        var children = this.props.children;
+        var length = children.length / 2;
+        var arr = children.slice(-length);
+        var contents = React.Children.map(arr, function (child, index) {
+            if (!child)
+                return;
+            var id = child.props.id || index.toString();
+            var props = {
+                activeId: activeId,
+                id: id,
+            };
+            return React.cloneElement(child, props);
+        });
+        return contents;
+    };
+    Tab.prototype.render = function () {
         var theme = this.props.theme;
         var tabPaneClassName = classNames({
             'layui-tab-title': true,
@@ -65,12 +85,14 @@ var Nav = /** @class */ (function (_super) {
             'layui-tab-brief': !(theme === 'default') && theme === 'brief',
         });
         return (React.createElement("div", { className: tabClassName },
-            React.createElement("ul", { className: tabPaneClassName }, this.renderItems())));
+            React.createElement("ul", { className: tabPaneClassName }, this.renderItems()),
+            React.createElement("div", { className: "layui-tab-content" }, this.renderContents())));
     };
-    Nav.Item = NavItem_1.default;
-    Nav.defaultProps = {
+    Tab.Item = TabItem_1.default;
+    Tab.Content = TabContents_1.default;
+    Tab.defaultProps = {
         theme: 'default',
     };
-    return Nav;
+    return Tab;
 }(React.Component));
-exports.default = Nav;
+exports.default = Tab;

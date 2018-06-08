@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import NavItem from './NavItem';
+import TabItem from './TabItem';
+import TabContents from './TabContents';
 
 export interface props {
     children: any,
@@ -10,10 +11,10 @@ export interface props {
     theme?: string
 }
 
-class Nav extends React.Component<props, object> {
+class Tab extends React.Component<props, object> {
 
-    static Item = NavItem;
-
+    static Item = TabItem;
+    static Content = TabContents;
     static defaultProps = {
         theme: 'default', //'default','card','brief' 3种风格
     };
@@ -47,8 +48,11 @@ class Nav extends React.Component<props, object> {
     renderItems() {
         const activeId = (this.state as any).activeId;
         const children = this.props.children;
+        const length = children.length / 2;
 
-        let items = React.Children.map(children, (child: any, index) => {
+        let arr = children.slice(0, length);
+
+        let items = React.Children.map(arr, (child: any, index) => {
             if (!child) return;
             const id = child.props.id || index.toString();
             const props = {
@@ -62,8 +66,27 @@ class Nav extends React.Component<props, object> {
         return items;
     }
 
-    render() {
+    renderContents() {
+        const activeId = (this.state as any).activeId;
+        const children = this.props.children;
+        const length = children.length / 2;
 
+        let arr = children.slice(-length);
+
+        let contents = React.Children.map(arr, (child: any, index) => {
+            if (!child) return;
+            const id = child.props.id || index.toString();
+            const props = {
+                activeId,
+                id,
+            };
+            return React.cloneElement(child, props);
+        });
+
+        return contents;
+    }
+
+    render() {
         const {theme} = this.props;
 
         let tabPaneClassName = classNames({
@@ -81,9 +104,12 @@ class Nav extends React.Component<props, object> {
                 <ul className={tabPaneClassName}>
                     {this.renderItems()}
                 </ul>
+                <div className="layui-tab-content">
+                    {this.renderContents()}
+                </div>
             </div>
         )
     }
 }
 
-export default Nav;
+export default Tab;

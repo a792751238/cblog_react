@@ -4,6 +4,7 @@
 import React from 'react';
 import Nav from '../../aspen/components/nav/Nav';
 import Grid from '../../aspen/components/grid/Grid';
+import Breadcrumb from '../../aspen/components/breadcrumb/Breadcrumb';
 
 class Ui2 extends React.Component {
     constructor(props) {
@@ -52,6 +53,13 @@ class Ui2 extends React.Component {
                         <Nav type='tree'/>
                     </Grid.Col>
                 </Grid.Row>
+
+                <Breadcrumb datas={[
+                    {id: 'Home', text: 'Home'},
+                    {onClick: () => console.log('click library'), id: 'Library', text: 'Library'},
+                    {id: 'Data', text: 'Data'},
+                    {active: true, id: 'Active', text: 'Active'}
+                ]} separator="/"/>
             </div>
         )
     }

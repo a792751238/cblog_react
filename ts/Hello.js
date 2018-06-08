@@ -13,7 +13,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var HelloCon_1 = require("./test/HelloCon");
 var Tag_1 = require("./components/tag/Tag");
-var Nav_1 = require("./components/nav/Nav");
+var Tab_1 = require("./components/Tab/Tab");
 var Hello = /** @class */ (function (_super) {
     __extends(Hello, _super);
     function Hello(props) {
@@ -30,17 +30,22 @@ var Hello = /** @class */ (function (_super) {
             throw new Error('You could be a little more enthusiastic. :D');
         }
         return (React.createElement("div", { className: "hello" },
-            React.createElement("div", { className: "greeting" },
-                "Hello ",
-                name + getExclamationMarks(enthusiasmLevel)),
-            React.createElement(HelloCon_1.default, { compiler: "today", framework: "good boy" }),
-            React.createElement(Tag_1.default, { shape: "dot", color: "orange" }),
-            React.createElement(Tag_1.default, { color: "orange" }, "hello world"),
-            React.createElement(Tag_1.default, { shape: "rim" }, "hello world"),
-            React.createElement(Nav_1.default, { active: "tab01", theme: "brief", onSelect: this.onSelect },
-                React.createElement(Nav_1.default.Item, { id: "tab01" }, "foo"),
-                React.createElement(Nav_1.default.Item, { id: "tab02" }, "bar"),
-                React.createElement(Nav_1.default.Item, { id: "tab03" }, "baz"))));
+            React.createElement(Tab_1.default, { active: "tab01", theme: "card", onSelect: this.onSelect },
+                React.createElement(Tab_1.default.Item, { id: "tab01" }, "foo"),
+                React.createElement(Tab_1.default.Item, { id: "tab02" }, "bar"),
+                React.createElement(Tab_1.default.Item, { id: "tab03" }, "baz"),
+                React.createElement(Tab_1.default.Content, { id: "tab01" },
+                    React.createElement("div", { className: "greeting" },
+                        "Hello ",
+                        name + getExclamationMarks(enthusiasmLevel))),
+                React.createElement(Tab_1.default.Content, { id: "tab02" },
+                    " ",
+                    React.createElement(HelloCon_1.default, { compiler: "today", framework: "good boy" })),
+                React.createElement(Tab_1.default.Content, { id: "tab03" },
+                    React.createElement("div", null,
+                        React.createElement(Tag_1.default, { shape: "dot", color: "orange" }),
+                        React.createElement(Tag_1.default, { color: "orange" }, "hello world"),
+                        React.createElement(Tag_1.default, { shape: "rim" }, "hello world"))))));
     };
     return Hello;
 }(React.Component));

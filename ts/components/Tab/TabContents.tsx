@@ -4,12 +4,12 @@ import * as classNames from 'classnames';
 export interface props {
     children?: any,
     onClick?: (activeId: string) => void,
-    active?: string,
+    activeId?: string,
     disabled?: boolean,
     id: string,
 }
 
-class NavItem extends React.Component<props, object> {
+class TabContents extends React.Component<props, object> {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
@@ -21,19 +21,19 @@ class NavItem extends React.Component<props, object> {
     }
 
     render() {
-        let {children, active, id, disabled, ...other} = this.props;
+        let {children, activeId, id, disabled, ...other} = this.props;
 
         let className = classNames({
-            'layui-this': active === id,
-            'layui-btn-disabled': disabled,
+            'layui-tab-item': true,
+            'layui-show': activeId === id,
         });
 
         return (
-            <li className={className} {...other} onClick={this.handleClick}>
+            <div className={className}>
                 {children}
-            </li>
+            </div>
         )
     }
 }
 
-export default NavItem;
+export default TabContents;

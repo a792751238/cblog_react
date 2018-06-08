@@ -1,7 +1,7 @@
 import * as React from 'react';
 import HelloCon from './test/HelloCon';
 import Tag from './components/tag/Tag';
-import Nav from './components/nav/Nav';
+import Tab from './components/Tab/Tab';
 
 export interface Props {
     name: string;
@@ -26,19 +26,25 @@ export default class Hello extends React.Component<Props, any> {
 
         return (
             <div className="hello">
-                <div className="greeting">
-                    Hello {name + getExclamationMarks(enthusiasmLevel)}
-                </div>
-                <HelloCon compiler="today" framework="good boy"/>
-                <Tag shape="dot" color="orange"/>
-                <Tag color="orange">hello world</Tag>
-                <Tag shape="rim">hello world</Tag>
+                <Tab active="tab01" theme="card" onSelect={this.onSelect}>
+                    <Tab.Item id="tab01">foo</Tab.Item>
+                    <Tab.Item id="tab02">bar</Tab.Item>
+                    <Tab.Item id="tab03">baz</Tab.Item>
 
-                <Nav active="tab01" theme="brief" onSelect={this.onSelect}>
-                    <Nav.Item id="tab01">foo</Nav.Item>
-                    <Nav.Item id="tab02">bar</Nav.Item>
-                    <Nav.Item id="tab03">baz</Nav.Item>
-                </Nav>
+                    <Tab.Content id="tab01">
+                        <div className="greeting">
+                            Hello {name + getExclamationMarks(enthusiasmLevel)}
+                        </div>
+                    </Tab.Content>
+                    <Tab.Content id="tab02"> <HelloCon compiler="today" framework="good boy"/></Tab.Content>
+                    <Tab.Content id="tab03">
+                        <div>
+                            <Tag shape="dot" color="orange"/>
+                            <Tag color="orange">hello world</Tag>
+                            <Tag shape="rim">hello world</Tag>
+                        </div>
+                    </Tab.Content>
+                </Tab>
             </div>
         );
     }
