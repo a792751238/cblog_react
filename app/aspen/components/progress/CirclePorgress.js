@@ -67,8 +67,8 @@ class Process extends React.Component {
 
 Process.defaultProps = {
     width: 150,
-    insideColor: '#999999',
-    outsideColor: '#4A90E2',
+    insideColor: '#e2e2e2',
+    outsideColor: '#2F4056',
     degree: 5,
     percent: 0,
 };
