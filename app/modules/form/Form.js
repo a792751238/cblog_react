@@ -18,24 +18,33 @@ class Ui2 extends React.Component {
             <div id="kiana">
                 <Grid.Row space={12}>
                     <Grid.Col xs={12} md={12}>
-                        <Nav defaultId="最新活动">
+                        <Nav defaultId="最新活动" type="tree" color="cyan">
                             <Nav.List id="最新活动" dropDown={[{
                                 text: '今天是个好日子',
                                 onClick: this.clickEvent
+                            }, {
+                                text: '今天',
+                                onClick: this.clickEvent
+                            }, {
+                                text: '好日子',
+                                onClick: this.clickEvent
+                            }, {
+                                text: '是个',
+                                onClick: this.clickEvent
                             }]}>
-                                <a>最新活动</a>
+                                最新活动
                             </Nav.List>
                             <Nav.List id="产品" dropDown={[{
                                 text: '今天',
                                 onClick: this.clickEvent
                             }]}>
-                                <a>产品</a>
+                                产品
                             </Nav.List>
                             <Nav.List id="活动">
-                                <a>活动</a>
+                                活动
                             </Nav.List>
                             <Nav.List id="设置">
-                                <a>设置</a>
+                                设置
                             </Nav.List>
                         </Nav>
                     </Grid.Col>

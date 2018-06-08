@@ -66,6 +66,7 @@ class Nav extends React.Component {
             const props = {
                 activeId: activeId,
                 hoverId: hoverId,
+                type: this.props.type,
                 id,
                 onMouseEnter: this.setHoverId,
                 onMountLeave: this.setHoverId,
@@ -78,10 +79,13 @@ class Nav extends React.Component {
     }
 
     render() {
+        let {color, type} = this.props;
+
         let ulClass = classNames({
             'layui-nav': true,
-            'layui-nav-tree': false,
-            'layui-inline': false
+            'layui-nav-tree': type && type === 'tree',
+            'layui-inline': type && type === 'tree',
+            [`layui-bg-${color}`]: color && typeof color === 'string'
         });
 
         return (
@@ -100,6 +104,8 @@ Nav.defaultProps = {
 
 Nav.propTypes = {
     type: PropTypes.string,
+    color: PropTypes.string,//green,blue,cyan
+    defaultId: PropTypes.string
 };
 
 export default Nav;

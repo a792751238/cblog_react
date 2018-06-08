@@ -14,11 +14,11 @@ class List extends React.Component {
         };
 
         this.setDomNode = this.setDomNode.bind(this);
-        this.selectId = this.selectId.bind(this);
+        this.clickToSelectActiveId = this.clickToSelectActiveId.bind(this);
         this.renderDropDown = this.renderDropDown.bind(this);
     }
 
-    selectId(id) {
+    clickToSelectActiveId(id) {
         this.props.selectActiveId && this.props.selectActiveId(id);
     }
 
@@ -29,10 +29,12 @@ class List extends React.Component {
     }
 
     renderDropDown() {
-        let {dropDown, hoverId, id} = this.props;
+        let {dropDown, type, hoverId, id} = this.props;
 
         let dropClass = classNames({
-            'layui-nav-child layui-anim layui-anim-upbit': true,
+            'layui-nav-child ': true,
+            'layui-anim-upbit': type === 'default',
+            'layui-anim': type === 'default',
             'layui-show': hoverId === id
         });
 
@@ -55,52 +57,85 @@ class List extends React.Component {
     }
 
     render() {
-        let {children, activeId, id, hoverId, onMouseEnter, onMountLeave, ...others} = this.props;
+        let {children, activeId, type, id, hoverId, onMouseEnter, onMountLeave, ...others} = this.props;
         let {domNode} = this.state;
 
         let listClass = classNames({
             'layui-nav-item': true,
-            'layui-this': activeId === id
+            'layui-this': type === 'default' && activeId === id,
+            'layui-nav-itemed': type === 'tree' && activeId === id
         });
 
         let moreClass = classNames({
             'layui-nav-more': true,
-            'layui-nav-mored': hoverId === id,
+            'layui-nav-mored': type === 'default' && hoverId === id,
         });
 
         let barStyle = {
-            top: '55px',
             opacity: 0
         };
 
-        if (domNode) {
+        let liProps = {};
+
+        if (domNode && type === 'default') {
             Object.assign(barStyle, {
                 width: `${domNode.clientWidth}px`,
                 top: `55px`,
                 opacity: 100
+            });
+
+
+        }
+
+        if (domNode && type === 'tree') {
+            // Object.assign(barStyle, {
+            //     height: `45px`,
+            //     top: `${domNode.offsetTop}px`,
+            //     opacity: 100
+            // });
+        }
+
+        if (type === 'default') {
+            liProps = Object.assign(liProps, {
+                className: listClass,
+                ref: (li) => {
+                    this.curLi = li
+                },
+                onMouseEnter: () => {
+                    onMouseEnter(id);
+                    this.setDomNode(this.curLi)
+                },
+                onMouseLeave: () => {
+                    onMountLeave(null);
+                    this.setDomNode(null)
+                },
+                onClick: () => {
+                    this.clickToSelectActiveId(id)
+                }
+            })
+        }
+
+        if (type === 'tree') {
+            liProps = Object.assign(liProps, {
+                className: listClass,
+                ref: (li) => {
+                    this.curLi = li
+                },
+                onClick: () => {
+                    this.setDomNode(this.curLi);
+                    this.clickToSelectActiveId(id);
+                }
             })
         }
 
         return (
-            <li className={listClass}
-                ref={(li) => {
-                    this.curLi = li
-                }}
-                onMouseEnter={() => {
-                    onMouseEnter(id);
-                    this.setDomNode(this.curLi)
-                }}
-                onMouseLeave={() => {
-                    onMountLeave(null);
-                    this.setDomNode(null)
-                }}
-                onClick={() => {
-                    this.selectId(id)
-                }}>
-                {children}
-                <span className={moreClass}>
+            <li {...liProps}>
+                <a>
+                    {children}
+                    <span className={moreClass}>
 
-                </span>
+                    </span>
+                </a>
                 {this.renderDropDown()}
                 <span className="layui-nav-bar" style={barStyle}>
 
