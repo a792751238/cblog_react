@@ -15,6 +15,30 @@ import Card from '../../aspen/components/card/Card';
 class Ui2 extends React.Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            projection: false,
+        };
+
+        this.openProjection = () => {
+            this.setState({
+                projection: !this.state.projection
+            }, () => {
+                elementFullScreen(document.getElementById('kiana'));
+
+                function elementFullScreen(element) {
+                    if (element.requestFullscreen) {
+                        element.requestFullscreen();
+                    } else if (element.mozRequestFullScreen) {
+                        element.mozRequestFullScreen();
+                    } else if (element.msRequestFullscreen) {
+                        element.msRequestFullscreen();
+                    } else if (element.webkitRequestFullscreen) {
+                        element.webkitRequestFullScreen();
+                    }
+                }
+            })
+        }
     }
 
     render() {
@@ -42,9 +66,27 @@ class Ui2 extends React.Component {
             {name: 'office', width: '130px'},
         ];
 
+        let style = {
+            position: 'fixed',
+            top: '0',
+            left: '0',
+            right: '0',
+            bottom: '0',
+            zIndex: '99999',
+            background: '#f1f1f1'
+        };
+
         return (
-            <div id="kiana">
-                <p style={{padding: '20px'}}>大小</p>
+            <div id="kiana"
+                 style={this.state.projection ? style : null}
+                 ref={(div) => {
+                     this.kiana = div
+                 }}
+            >
+                <p style={{padding: '20px'}}>
+                    大小
+                    <Button onClick={this.openProjection}>投影仪</Button>
+                </p>
 
                 <Tab active="tab01" theme="card">
                     <Tab.Item id="tab01"><span>我是能够删除的<Icon icon='emo-happy' style={{
