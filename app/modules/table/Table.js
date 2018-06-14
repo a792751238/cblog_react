@@ -24,17 +24,19 @@ class Ui2 extends React.Component {
             this.setState({
                 projection: !this.state.projection
             }, () => {
-                elementFullScreen(document.getElementById('kiana'));
+                if (this.state.projection) {
+                    elementFullScreen(document.getElementById('kiana'));
 
-                function elementFullScreen(element) {
-                    if (element.requestFullscreen) {
-                        element.requestFullscreen();
-                    } else if (element.mozRequestFullScreen) {
-                        element.mozRequestFullScreen();
-                    } else if (element.msRequestFullscreen) {
-                        element.msRequestFullscreen();
-                    } else if (element.webkitRequestFullscreen) {
-                        element.webkitRequestFullScreen();
+                    function elementFullScreen(element) {
+                        if (element.requestFullscreen) {
+                            element.requestFullscreen();
+                        } else if (element.mozRequestFullScreen) {
+                            element.mozRequestFullScreen();
+                        } else if (element.msRequestFullscreen) {
+                            element.msRequestFullscreen();
+                        } else if (element.webkitRequestFullscreen) {
+                            element.webkitRequestFullScreen();
+                        }
                     }
                 }
             })
