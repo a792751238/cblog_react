@@ -13,17 +13,31 @@ class Ui2 extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: '123'
+            value: '',
+            listValue: ['东邪', '西毒', '南帝', '北丐'],
         };
 
         this.clickEvent = () => {
-            alert(123)
+
         };
 
         this.onChange = (e) => {
-            this.setState({
-                value: e.target.value
-            })
+            this.setState({value: e.target.value});
+        };
+
+        this.itemClick = () => {
+
+        };
+
+        this.onKeydownHandle = (e) => {
+            if (e.key === 'Enter' && this.state.value) {
+                this.props.addTodo(this.state.value);
+                this.state.listValue.push(this.state.value);
+                this.setState({
+                    value: '',
+                    listValue: this.state.listValue
+                })
+            }
         }
     }
 
@@ -31,15 +45,20 @@ class Ui2 extends React.Component {
     render() {
         return (
             <div id="kiana">
+                <Input value={this.state.value} onKeyDown={this.onKeydownHandle} getInputChangeValue={this.onChange}/>
                 <Grid.Row space={12}>
                     <Grid.Col xs={12} md={12}>
-                        <Tab active="tab04" theme="card">
-                            <Tab.Item id="tab01">bar</Tab.Item>
-                            <Tab.Item id="tab02">bar</Tab.Item>
-                            <Tab.Item id="tab03">bar</Tab.Item>
-                            <Tab.Item id="tab04">bar</Tab.Item>
-
-                            <Tab.Content id="tab01">
+                        <Tab active="tab04" theme="card" onClick={this.clickEvent}>
+                            {
+                                this.state.listValue.map((value, index) => {
+                                    return <Tab.Item key={`tab0${index + 1}`}
+                                                     id={`tab0${index + 1}`}
+                                                     onClick={this.itemClick}>
+                                        {value}
+                                    </Tab.Item>
+                                })
+                            }
+                            <Tab.Content id="tab01" key="tab01">
                                 <Nav defaultId="最新活动" type="tree" color="cyan">
                                     <Nav.List id="最新活动" dropDown={[{
                                         text: '今天是个好日子',
@@ -70,7 +89,7 @@ class Ui2 extends React.Component {
                                     </Nav.List>
                                 </Nav>
                             </Tab.Content>
-                            <Tab.Content id="tab02">
+                            <Tab.Content id="tab02" key="tab02">
                                 <Card header={'数据按低计价三角地加上的'}
                                       content={'数据按低计价三角地加上的数据按低计价三角地' +
                                       '加上的数据按低计价三角地加上的数据按低计价三角地' +
@@ -78,7 +97,7 @@ class Ui2 extends React.Component {
                                       '计价三角地加上的'}
                                 />
                             </Tab.Content>
-                            <Tab.Content id="tab03">
+                            <Tab.Content id="tab03" key="tab03">
                                 <Breadcrumb datas={[
                                     {id: 'Home', text: 'Home'},
                                     {onClick: () => console.log('click library'), id: 'Library', text: 'Library'},
@@ -86,7 +105,7 @@ class Ui2 extends React.Component {
                                     {active: true, id: 'Active', text: 'Active'}
                                 ]} separator="/"/>
                             </Tab.Content>
-                            <Tab.Content id="tab04">
+                            <Tab.Content id="tab04" key="tab04">
                                 <Input value={this.state.value} getInputChangeValue={this.onChange}/>
                             </Tab.Content>
                         </Tab>
@@ -96,5 +115,11 @@ class Ui2 extends React.Component {
         )
     }
 }
+
+Ui2.defaultProps = {
+    addTodo: (value) => {
+        console.log(value)
+    }
+};
 
 export default Ui2;

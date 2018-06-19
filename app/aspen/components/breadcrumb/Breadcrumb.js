@@ -38,7 +38,7 @@ class Breakcrume extends React.Component {
 
 
             return (
-                <span>
+                <span key={dataObj.id}>
                     <a {...props} style={style}>{dataObj.text}</a>
                     {
                         showSp ?

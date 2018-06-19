@@ -4,11 +4,27 @@
   "description": "this is a project about react",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest ./__tests__",
     "build": "set NODE_ENV=production&&webpack -p --config webpack.pro.js",
     "start": "webpack-dev-server --devtool eval --progress --colors --config webpack.dev.js",
     "ts_start": "webpack-dev-server --devtool eval --progress --colors --config webpack.ts.dev.js",
     "ts_build": "set NODE_ENV=production&&webpack -p --config webpack.ts.pro.js"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less|scss)$": "<rootDir>/__mocks__/styleMock.js"
+    },
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    }
   },
   "author": "easterCat",
   "license": "ISC",
@@ -17,6 +33,7 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.3",
+    "babel-jest": "^23.0.1",
     "babel-loader": "^7.1.2",
     "babel-plugin-import": "^1.6.1",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
@@ -28,6 +45,7 @@
     "clean-webpack-plugin": "^0.1.17",
     "copy-webpack-plugin": "^4.2.0",
     "css-loader": "^0.28.7",
+    "enzyme": "^2.9.1",
     "eslint": "^4.19.1",
     "eslint-loader": "^2.0.0",
     "eslint-plugin-react": "^7.7.0",
@@ -37,12 +55,18 @@
     "html-webpack-plugin": "^2.30.1",
     "html-webpack-template": "^6.0.2",
     "image-webpack-loader": "^3.4.2",
+    "jest": "^23.1.0",
+    "jest-cli": "^23.1.0",
     "jquery-ui": "^1.12.1",
     "json-loader": "^0.5.7",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
     "node-sass": "^4.8.3",
     "postcss-loader": "^2.0.8",
+    "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^16.4.1",
+    "react-scripts-ts": "1.0.6",
+    "react-test-renderer": "^16.4.1",
     "sass-loader": "^6.0.6",
     "source-map-loader": "^0.2.3",
     "style-loader": "^0.19.0",
@@ -50,9 +74,7 @@
     "url-loader": "^0.6.2",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1",
-    "webpack-merge": "^4.1.0",
-    "react-addons-test-utils": "^15.4.2",
-    "react-scripts-ts": "1.0.6"
+    "webpack-merge": "^4.1.0"
   },
   "dependencies": {
     "@types/enzyme": "^2.7.2",
@@ -67,7 +89,6 @@
     "blueimp-md5": "^2.10.0",
     "curry": "^1.2.0",
     "easter-utils": "git+ssh://git@github.com/a792751238/easter_utils.git",
-    "enzyme": "^2.7.1",
     "github-markdown-css": "^2.9.0",
     "gojs": "^1.8.2",
     "immutable": "^3.8.2",
@@ -77,7 +98,6 @@
     "node-sass": "^4.8.3",
     "object-assign": "^4.1.1",
     "react": "^16.0.0",
-    "react-dom": "^16.0.0",
     "react-markdown": "^2.5.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",

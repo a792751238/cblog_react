@@ -16,7 +16,7 @@ class Input extends React.Component {
     }
 
     render() {
-        let {type, name, className, value, defaultValue, placeholder} = this.props;
+        let {type, name, className, value, onKeyDown, defaultValue, placeholder} = this.props;
 
         let inputClass = classnames({
             'layui-input': true,
@@ -31,7 +31,8 @@ class Input extends React.Component {
             autoComplete: "off",
             placeholder: placeholder,
             className: inputClass,
-            onChange: this.onChange
+            onChange: this.onChange,
+            onKeyDown: onKeyDown
         };
 
         if (defaultValue && (!value || value === '')) {
