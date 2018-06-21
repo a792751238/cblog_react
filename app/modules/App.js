@@ -19,26 +19,24 @@ class App extends React.Component {
 
         history.replace('/home')
 
-        // if (user) {
-        //     if (location.pathname === '/home' || location.pathname === '/') {
-        //         history.replace('/home')
-        //     }
-        // } else {
-        //     if (location.pathname !== '/register') {
-        //         history.replace('/login')
-        //     }
-        // }
-
+        if (user) {
+            if (location.pathname === '/home' || location.pathname === '/') {
+                history.replace('/home')
+            }
+        } else {
+            if (location.pathname !== '/register') {
+                history.replace('/login')
+            }
+        }
     }
 
     render() {
-
         return (
             <div className="app">
                 <Route path="/home" component={Home}/>
-                {/*<Route path="/login" component={Login}/>*/}
-                {/*<Route path="/register" component={Register}/>*/}
-                {/*<Route path="/changeUser" component={ChangeUser}/>*/}
+                <Route path="/login" component={Login}/>
+                <Route path="/register" component={Register}/>
+                <Route path="/changeUser" component={ChangeUser}/>
             </div>
         )
     }

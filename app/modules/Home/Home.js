@@ -33,7 +33,7 @@ class Home extends React.Component {
 
     componentWillMount() {
         if (!this.res || !this.res.length || this.ress.indexOf(this.res) === -1) {
-            this.props.history.replace(`/home/form`)
+            this.props.history.replace(`/home/layer`)
         }
     }
 

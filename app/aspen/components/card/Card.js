@@ -9,7 +9,6 @@ import PropTypes from 'prop-types';
 class Card extends React.Component {
 
     render() {
-
         let {header, content} = this.props;
 
         return (
@@ -23,7 +22,6 @@ class Card extends React.Component {
             </div>
         )
     }
-
 }
 
 export default Card;

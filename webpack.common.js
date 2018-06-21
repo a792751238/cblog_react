@@ -15,13 +15,13 @@ module.exports = {
             'jQuery': 'jquery/dist/jquery',
             '$': 'jquery/dist/jquery',
             Util$: path.resolve(__dirname, 'easter_utils/index.js'),
-            LayCss$: path.resolve(__dirname, 'alias/layui/layui/layui/css/layui.css'),
+            LAYUI_CSS$: path.resolve(__dirname, 'alias/layui/layui/layui/css/layui.css'),
+            LAYER_CSS$: path.resolve(__dirname, 'alias/layui/layui/layui/css/modules/layer/default/layer.css'),
         },
         extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".json"]
     },
     entry: {
-        // app: ['babel-polyfill', './app.js'],
-        app: './index.js'
+        app: ['babel-polyfill', './index.js'],
     },
     output: {
         path: path.resolve(__dirname, 'dist'), //打包的文件夹
@@ -45,6 +45,12 @@ module.exports = {
                     loader: "ts-loader"
                 }]
             },
+            // {
+            //     enforce: "pre",
+            //     test: /\.(js|jsx)$/,
+            //     exclude: /(node_modules|bower_components)/,
+            //     loader: "eslint-loader",
+            // },
             {
                 test: /\.(js|jsx)$/,
                 exclude: /(node_modules|bower_components)/,

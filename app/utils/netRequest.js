@@ -8,18 +8,29 @@ import config from '../../app.config';
 export function get(url, type) {
     console.log('netRequest中的jquery', $);
     return dispatch => {
-        return $.ajax({type: 'GET', url: url, xhrFields: {withCredentials: true}})
-            .then(
-                function (res) {
-                    dispatch({
-                        type: type,
-                        payload: res
-                    });
-                },
-                function (err) {
-                    console.log(err);
-                }
-            );
+        // return $.ajax({type: 'GET', url: url, xhrFields: {withCredentials: true}})
+        //     .then(
+        //         function (res) {
+        //             dispatch({
+        //                 type: type,
+        //                 payload: res
+        //             });
+        //         },
+        //         function (err) {
+        //             console.log(err);
+        //         }
+        //     );
+
+        return axios.get(url)
+            .then(res => {
+                dispatch({
+                    type: type,
+                    payload: res
+                });
+            })
+            .catch(error => {
+                console.log(err);
+            })
     };
 }
 

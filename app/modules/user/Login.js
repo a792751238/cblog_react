@@ -37,7 +37,8 @@ class Logining extends React.Component {
                             }
                         })
                         .catch((error) => {
-                            message.error(`登录失败${error}`);
+                            console.log(`登录失败${error}`);
+                            message.error('登录失败');
                         })
                 }
             });
@@ -45,10 +46,10 @@ class Logining extends React.Component {
     }
 
     componentDidMount() {
-        // const {user, history} = this.props;
-        // if (user) {
-        //     history.replace('/home');
-        // }
+        const {user, history} = this.props;
+        if (user) {
+            history.replace('/home');
+        }
     }
 
     render() {

@@ -12,6 +12,7 @@ import Gante from '../gantt/Gantt';
 import Ui from '../ui/Ui';
 import Table from '../table/Table';
 import Form from '../form/Form';
+import Layer from '../layer/Ui3';
 // import HelloCon from '../test/HelloCon.tsx';
 
 class Content extends React.Component {
@@ -27,6 +28,7 @@ class Content extends React.Component {
                 <Route path="/home/ui" component={Ui}/>
                 <Route path="/home/table" component={Table}/>
                 <Route path="/home/form" component={Form}/>
+                <Route path="/home/layer" component={Layer}/>
             </div>
         )
     }

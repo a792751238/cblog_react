@@ -41,6 +41,19 @@ class Ui2 extends React.Component {
         }
     }
 
+    renderTabList() {
+        return (
+            this.state.listValue.map((value, index) => {
+                let str = `tab0${index + 1}`;
+                return <Tab.Item key={str}
+                                 id={str}
+                                 onClick={this.itemClick}>
+                    {value}
+                </Tab.Item>
+            })
+        )
+    }
+
 
     render() {
         return (
@@ -48,16 +61,11 @@ class Ui2 extends React.Component {
                 <Input value={this.state.value} onKeyDown={this.onKeydownHandle} getInputChangeValue={this.onChange}/>
                 <Grid.Row space={12}>
                     <Grid.Col xs={12} md={12}>
-                        <Tab active="tab04" theme="card" onClick={this.clickEvent}>
+                        <Tab active="tab01" theme="card" onClick={this.clickEvent}>
                             {
-                                this.state.listValue.map((value, index) => {
-                                    return <Tab.Item key={`tab0${index + 1}`}
-                                                     id={`tab0${index + 1}`}
-                                                     onClick={this.itemClick}>
-                                        {value}
-                                    </Tab.Item>
-                                })
+                                this.renderTabList()
                             }
+
                             <Tab.Content id="tab01" key="tab01">
                                 <Nav defaultId="最新活动" type="tree" color="cyan">
                                     <Nav.List id="最新活动" dropDown={[{
