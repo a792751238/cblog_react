@@ -1,0 +1,11 @@
+/build/
+/config/
+/dist/
+/ts/
+/__mocks__/
+/__tests__/
+/alias/
+/easter_utils/
+/node_modules/
+/app/utils/
+/app/plugins/

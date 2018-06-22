@@ -5,17 +5,19 @@
 const path = require('path');
 const webpack = require('webpack');
 
+const ROOT_PATH = path.resolve(__dirname, '..');
+
 module.exports = {
-    context: path.resolve(__dirname, 'ts'),
+    context: path.resolve(ROOT_PATH, 'ts'),
     resolve: {
         modules: [
-            path.resolve(__dirname, 'node_modules'),
+            path.resolve(ROOT_PATH, 'node_modules'),
         ],
         alias: {
             'jQuery': 'jquery/dist/jquery',
             '$': 'jquery/dist/jquery',
-            Util$: path.resolve(__dirname, './utils/kiana/'),
-            LayCss$: path.resolve(__dirname, 'alias/layui/layui/layui/css/layui.css')
+            Util$: path.resolve(ROOT_PATH, './utils/kiana/'),
+            LayCss$: path.resolve(ROOT_PATH, 'alias/layui/layui/layui/css/layui.css')
         },
         extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".json"]
     },
@@ -24,7 +26,7 @@ module.exports = {
         app: './app.tsx'
     },
     output: {
-        path: path.resolve(__dirname, 'dist'), //打包的文件夹
+        path: path.resolve(ROOT_PATH, 'dist'), //打包的文件夹
         filename: 'app.js',
     },
     module: {
@@ -88,7 +90,7 @@ module.exports = {
         ]
     },
     devServer: {
-        contentBase: './ts',//为一个目录下的文件提供本地服务器，在这里设置其所在目录
+        contentBase: path.resolve(ROOT_PATH, './ts'),//为一个目录下的文件提供本地服务器，在这里设置其所在目录
         historyApiFallback: true,//跳转将指向index.html
         inline: true,//开启自动刷新页面
         port: 3000,//设置监听端口3000

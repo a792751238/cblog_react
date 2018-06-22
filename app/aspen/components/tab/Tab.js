@@ -1,15 +1,22 @@
 "use strict";
 var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
+        var extendStatics = Object.setPrototypeOf ||
+            ({__proto__: []} instanceof Array && function (d, b) {
+                d.__proto__ = b;
+            }) ||
+            function (d, b) {
+                for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+            };
+        return function (d, b) {
+            extendStatics(d, b);
+            function __() {
+                this.constructor = d;
+            }
+
+            d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+        };
+    })();
+Object.defineProperty(exports, "__esModule", {value: true});
 var React = require("react");
 var classNames = require("classnames");
 var TabItem_1 = require("./TabItem");
@@ -24,9 +31,10 @@ var Tab = /** @class */ (function (_super) {
         _this.renderItems = _this.renderItems.bind(_this);
         return _this;
     }
+
     Tab.prototype.componentWillReceiveProps = function (nextProps) {
         if (nextProps.active !== this.props.active) {
-            this.setState({ activeId: nextProps.active });
+            this.setState({activeId: nextProps.active});
         }
     };
     Tab.prototype.handleChoose = function (id) {
@@ -84,9 +92,9 @@ var Tab = /** @class */ (function (_super) {
             'layui-tab-card': !(theme === 'default') && theme === 'card',
             'layui-tab-brief': !(theme === 'default') && theme === 'brief',
         });
-        return (React.createElement("div", { className: tabClassName },
-            React.createElement("ul", { className: tabPaneClassName }, this.renderItems()),
-            React.createElement("div", { className: "layui-tab-content" }, this.renderContents())));
+        return (React.createElement("div", {className: tabClassName},
+            React.createElement("ul", {className: tabPaneClassName}, this.renderItems()),
+            React.createElement("div", {className: "layui-tab-content"}, this.renderContents())));
     };
     Tab.Item = TabItem_1.default;
     Tab.Content = TabContents_1.default;
