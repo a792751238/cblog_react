@@ -22,7 +22,6 @@ module.exports = {
         extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".json"]
     },
     entry: {
-        // app: ['babel-polyfill', './app.js'],
         app: './app.tsx'
     },
     output: {
